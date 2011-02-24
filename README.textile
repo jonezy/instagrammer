@@ -1,3 +1,3 @@
-= instagrammer
+h1. instagrammer
 
 This will eventually end up being a c# wrapper for accessing and using the instagram public api, right now it's a bloody mess and should be ignored completely.

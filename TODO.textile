@@ -1,4 +1,4 @@
-= TODO
+h1. TODO
 
 * decide on pattern for accessing data (ActiveRecord)
 * pick one data type and go end to end with the coding
