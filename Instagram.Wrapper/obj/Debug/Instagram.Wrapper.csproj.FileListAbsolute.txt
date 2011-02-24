@@ -1,0 +1,5 @@
+C:\dev\Personal\Instagram.Wrapper\bin\Instagram.Wrapper.dll
+C:\dev\Personal\Instagram.Wrapper\bin\Instagram.Wrapper.pdb
+C:\dev\Personal\Instagram.Wrapper\obj\Debug\ResolveAssemblyReference.cache
+C:\dev\Personal\Instagram.Wrapper\obj\Debug\Instagram.Wrapper.dll
+C:\dev\Personal\Instagram.Wrapper\obj\Debug\Instagram.Wrapper.pdb
