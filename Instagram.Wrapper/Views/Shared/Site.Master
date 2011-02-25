@@ -1,40 +1,31 @@
 ﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
-    <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
-</head>
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <meta charset="utf-8" /> 
+  <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
 
-<body>
-    <div class="page">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">	
+      
+  <link rel="stylesheet" href="../../Content/site.css" media="screen" />
+  <link href="http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold" rel="stylesheet" type="text/css">
+</head>    
+<body> 
 
-        <div id="header">
-            <div id="title">
-                <h1>My MVC Application</h1>
-            </div>
-              
-            <div id="logindisplay">
-                <% Html.RenderPartial("LogOnUserControl"); %>
-            </div> 
-            
-            <div id="menucontainer">
-            
-                <ul id="menu">              
-                    <li><%= Html.ActionLink("Home", "Index", "Home")%></li>
-                    <li><%= Html.ActionLink("About", "About", "Home")%></li>
-                </ul>
-            
-            </div>
-        </div>
-
-        <div id="main">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
-
-            <div id="footer">
-            </div>
-        </div>
-    </div>
+<header class="clearfix">
+  <%= Html.ActionLink("instagrammer", "Index", null, new { id = "logo" }) %>
+  <nav>
+    <ul>
+      <li><%= Html.ActionLink("Home", "Index") %></li>
+      <li><%= Html.ActionLink("About", "About") %></li>
+    </ul>
+  </nav>
+</header>
+<section>
+    <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+</section>
+<footer></footer>
 </body>
 </html>

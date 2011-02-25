@@ -7,5 +7,5 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <h2>AccessRequest</h2>
-    Hi <%= Model.user.full_name %>
+    Hi <%= Model.user.username %>
 </asp:Content>

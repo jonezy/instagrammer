@@ -5,14 +5,16 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <h2><%= Html.Encode(ViewData["Message"]) %></h2>
     <% 
         string queryString = string.Format("?client_id={0}&redirect_uri={1}&response_type=code", "bfbdf77fbe934ffc8fbc710f6d15f75e", Server.UrlEncode("http://localhost/InstagramWrapper/OAuth/AccessRequest/"));
 
-        if (Model == null) {
+        if (Model.id == 0) {
     %>
-    <a href="https://api.instagram.com/oauth/authorize/<%= queryString %>" target="_blank">Authenticate with instagram</a>
+        <h2>Please authenticate with instagram</h2>
+        <p>You will be returned back to this page once you've granted this site access to your instagram account.</p>
+        <a href="https://api.instagram.com/oauth/authorize/<%= queryString %>">Authenticate with instagram</a>
     <% } else { %>
-    Welcome back <%= Model.full_name %>
+        <h2>Welcome back <%= Model.username %></h2>
+        following: <%= Model.counts.follows %>, followed by: <%= Model.counts.followed_by %>
     <% } %>
 </asp:Content>

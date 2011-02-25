@@ -1,24 +1,51 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Runtime.Serialization;
-using System.Runtime.Serialization.Json;
-using System.IO;
-using System.Text;
 
 namespace Instagram.Wrapper.Models {
     [DataContract]
+    public class InstagramResponse {
+        [DataMember]
+        public Meta meta { get; set; }
+        [DataMember]
+        public InstagramUser data { get; set; }
+    }
+
+    [DataContract(Name="meta")]
+    public class Meta {
+        [DataMember]
+        public string status { get; set; }
+    }
+
+    [DataContract(Name="data")]
     public partial class InstagramUser {
         public InstagramUser() : base("") { }
         [DataMember]
         public int id { get; set; }
-
+        
         [DataMember]
         public string username { get; set; }
         
         [DataMember]
-        public string full_name { get; set; }
+        public string first_name { get; set; }
+        
+        [DataMember]
+        public string last_name { get; set; }
+        
+        [DataMember]
+        public string profile_picture { get; set; }
+        
+        [DataMember]
+        public Counts counts { get; set; } 
+    }
+
+    [DataContract(Name = "counts")]
+    public class Counts {
+        [DataMember]
+        public string media { get; set; }
+        [DataMember]
+        public string follows { get; set; }
+        [DataMember]
+        public string followed_by { get; set; }
     }
 
     public partial class InstagramUser:ActiveRecordBase {
@@ -28,15 +55,11 @@ namespace Instagram.Wrapper.Models {
             if (string.IsNullOrEmpty(token))
                 throw new ArgumentException("You must provide an instragram token");
 
-            string url = string.Format("https://api.instagram.com/v1/users/self/media/recent?access_token={0}", token);
+            string json = GetJSON(string.Format(ApiUrls.USER_SELF_URL, token), null);
+            InstagramResponse response = Deserialize<InstagramResponse>(json);
 
-            string tokenJSON = Requestor.GetJSON(url, null);
-            InstagramUser user = new InstagramUser();
-            DataContractJsonSerializer serializer = new DataContractJsonSerializer(user.GetType());
-            MemoryStream memoryStream = new MemoryStream(Encoding.Unicode.GetBytes(tokenJSON));
-            user = serializer.ReadObject(memoryStream) as InstagramUser;
-
-            return user;
+            return response.data;
         }
+
     }
 }
