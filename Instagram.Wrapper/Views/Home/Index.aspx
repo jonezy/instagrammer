@@ -16,5 +16,6 @@
     <% } else { %>
         <h2>Welcome back <%= Model.username %></h2>
         following: <%= Model.counts.follows %>, followed by: <%= Model.counts.followed_by %>
+        <% Html.RenderPartial("UserFeed", ViewData["UserFeed"]); %>
     <% } %>
 </asp:Content>

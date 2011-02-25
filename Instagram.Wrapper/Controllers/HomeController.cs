@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System.Collections.Generic;
+using System.Web;
 using System.Web.Mvc;
 using Instagram.Wrapper.Models;
 
@@ -16,8 +17,11 @@ namespace Instagram.Wrapper.Controllers {
                 HttpCookie userCookie =  Request.Cookies.Get(COOKIE_ID);
                 userToken.access_token = userCookie.Values["token"];
 
-                self = InstagramUser.Self(userToken.access_token);
+                self = InstagramUser.Single(userToken.access_token, null);
             }
+
+            List<UserFeed> feedItems = InstagramUser.Feed(userToken.access_token);
+            ViewData["UserFeed"] = feedItems;
 
             return View(self);
         }

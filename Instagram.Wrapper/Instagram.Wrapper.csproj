@@ -69,19 +69,26 @@
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OAuthController.cs" />
+    <Compile Include="Controllers\UserFeedController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ActiveRecordBase.cs" />
     <Compile Include="Models\ApiUrls.cs" />
+    <Compile Include="Models\Comments.cs" />
+    <Compile Include="Models\Image.cs" />
     <Compile Include="Models\InstagramUser.cs" />
+    <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\Meta.cs" />
     <Compile Include="Models\OAuthToken.cs" />
+    <Compile Include="Models\Pagination.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\messages.css" />
     <Content Include="Content\reset.css" />
     <Content Include="Global.asax" />
+    <Content Include="Views\Home\UserFeed.ascx" />
     <Content Include="Views\OAuth\AccessRequest.aspx" />
     <Content Include="Web.config" />
     <Content Include="Content\Site.css" />

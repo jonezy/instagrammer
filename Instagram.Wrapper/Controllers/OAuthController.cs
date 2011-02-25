@@ -19,8 +19,10 @@ namespace Instagram.Wrapper.Controllers
         public ActionResult AccessRequest() {
 
             string code = TryParse(Request.QueryString["CODE"].ToString());
-
-            OAuthToken oauthToken = OAuthToken.Request(code);
+            OAuthToken oauthToken = null;
+            try {
+                oauthToken = OAuthToken.Request(code);
+            } catch {  }
 
             if (oauthToken != null) {
                 // set a cookie with the users access token?
@@ -29,6 +31,8 @@ namespace Instagram.Wrapper.Controllers
                 Response.Cookies.Add(userCookie);
                 userCookie.Values.Add("token", oauthToken.access_token);
                 Response.Cookies[COOKIE_ID].Expires = DateTime.Now.AddYears(1);
+
+                return RedirectToAction("Index", "Home");
             }
 
             return View(oauthToken);

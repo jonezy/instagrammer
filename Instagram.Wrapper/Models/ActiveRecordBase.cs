@@ -22,6 +22,15 @@ namespace Instagram.Wrapper.Models {
             ms.Dispose();
             return obj;
         }
+        
+        protected static string Serialize<T>(T obj) {
+            System.Runtime.Serialization.Json.DataContractJsonSerializer serializer = new System.Runtime.Serialization.Json.DataContractJsonSerializer(obj.GetType());
+            MemoryStream ms = new MemoryStream();
+            serializer.WriteObject(ms, obj);
+            string retVal = Encoding.Default.GetString(ms.ToArray());
+            ms.Dispose();
+            return retVal;
+        }
 
         public static string GetJSON(string url, string postData) {
             WebRequest webRequest = null;
