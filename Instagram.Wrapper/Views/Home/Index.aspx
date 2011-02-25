@@ -14,8 +14,15 @@
         <p>You will be returned back to this page once you've granted this site access to your instagram account.</p>
         <a href="https://api.instagram.com/oauth/authorize/<%= queryString %>">Authenticate with instagram</a>
     <% } else { %>
-        <h2>Welcome back <%= Model.username %></h2>
-        following: <%= Model.counts.follows %>, followed by: <%= Model.counts.followed_by %>
-        <% Html.RenderPartial("UserFeed", ViewData["UserFeed"]); %>
+    <div id="left">
+        <div class="user_badge">
+            <h2>Welcome back <%= Model.username %></h2>
+            following: <%= Model.counts.follows %>, followed by: <%= Model.counts.followed_by %>
+        </div>
+
+    </div>
+    <div id="center">
+        <% Html.RenderPartial("UserFeed", ViewData["UserFeed"]); %>    
+    </div>
     <% } %>
 </asp:Content>

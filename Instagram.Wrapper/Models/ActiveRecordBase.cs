@@ -10,7 +10,7 @@ namespace Instagram.Wrapper.Models {
         protected string _token;
 
         public ActiveRecordBase(string token) {
-            _token = token;
+             _token = token;
         }
 
         protected static T Deserialize<T>(string json) {

@@ -78,9 +78,11 @@
     <Compile Include="Models\Comments.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\InstagramUser.cs" />
+    <Compile Include="Models\InstagramUserController.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\Meta.cs" />
     <Compile Include="Models\OAuthToken.cs" />
+    <Compile Include="Models\OAuthTokenController.cs" />
     <Compile Include="Models\Pagination.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

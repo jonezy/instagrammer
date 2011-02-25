@@ -22,7 +22,7 @@
     </ul>
   </nav>
 </header>
-<section>
+<section class="clearfix">
     <asp:ContentPlaceHolder ID="MainContent" runat="server" />
 </section>
 <footer></footer>

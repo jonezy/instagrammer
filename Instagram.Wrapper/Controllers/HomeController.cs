@@ -10,17 +10,17 @@ namespace Instagram.Wrapper.Controllers {
 
         public ActionResult Index() {
             ViewData["Message"] = "Welcome to ASP.NET MVC!";
-            InstagramUser self = new InstagramUser();
+            
             OAuthToken userToken = new OAuthToken();
 
             if (Request.Cookies[COOKIE_ID] != null) {   
                 HttpCookie userCookie =  Request.Cookies.Get(COOKIE_ID);
                 userToken.access_token = userCookie.Values["token"];
-
-                self = InstagramUser.Single(userToken.access_token, null);
             }
 
-            List<UserFeed> feedItems = InstagramUser.Feed(userToken.access_token);
+            InstagramUserController controller = new InstagramUserController(userToken.access_token);
+            InstagramUser self = controller.Single(null);
+            List<UserFeed> feedItems = controller.Feed();
             ViewData["UserFeed"] = feedItems;
 
             return View(self);

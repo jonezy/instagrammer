@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Runtime.Serialization;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Instagram.Wrapper.Models {
     // 
@@ -15,7 +15,6 @@ namespace Instagram.Wrapper.Models {
 
     [DataContract]
     public partial class InstagramUser {
-        public InstagramUser() : base("") { }
         [DataMember]
         public int id { get; set; }
         
@@ -72,7 +71,7 @@ namespace Instagram.Wrapper.Models {
         [DataMember]
         public string created_time { get; set; }
         [DataMember]
-        public IList<Image> images { get; set; }
+        public Images images { get; set; }
         [DataMember]
         public string type { get; set; }
         [DataMember]
@@ -85,8 +84,19 @@ namespace Instagram.Wrapper.Models {
         public string id { get; set; }
         [DataMember]
         public InstagramUser user { get; set; }
+        [DataMember]
+        public Comment caption { get; set; }
     }
 
+    [DataContract]
+    public class Images {
+        [DataMember]
+        public InstagramImage low_resolution { get; set; }
+        [DataMember]
+        public InstagramImage thumbnail { get; set; }
+        [DataMember]
+        public InstagramImage standard_resolution { get; set; }
+    }
     [DataContract]
     public class ItemComments {
         [DataMember]
@@ -101,40 +111,5 @@ namespace Instagram.Wrapper.Models {
         public string count { get; set; }
         [DataMember]
         public IList<InstagramUser> data { get; set; }
-    }
- 
-    public partial class InstagramUser:ActiveRecordBase {
-        public InstagramUser(string token) : base(token) { }
-
-        public static InstagramUser Single(string token, string userId) {
-            if (string.IsNullOrEmpty(token))
-                throw new ArgumentException("You must provide an instragram token");
-
-            string json = GetJSON(string.Format(ApiUrls.USER_URL, userId != null ? userId : "self", token), null);
-            InstagramSingleResponse response = Deserialize<InstagramSingleResponse>(json);
-
-            return response.data;
-        }
-
-        public static List<UserFeed> Feed(string token) {
-            if (string.IsNullOrEmpty(token))
-                throw new ArgumentException("You must provide an instragram token");
-
-            string tempJson = Serialize<FeedItems>(new FeedItems());
-
-            string json = GetJSON(string.Format(ApiUrls.USER_FEED_URL, token), null);
-            FeedItems response = Deserialize<FeedItems>(json);
-
-            return response.data;
-        }
-
-        private static FeedItems GetFeedItem() {
-            FeedItems item = new FeedItems();
-            item.pagination = new Pagination { next_max_id = "1234", next_url = "http://next", prev_max_id = "1234", prev_url = "http://prev" };
-            item.meta = new Meta { status = "200" };
-
-
-            return item;
-        }
     }
 }

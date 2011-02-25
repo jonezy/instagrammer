@@ -21,7 +21,7 @@ namespace Instagram.Wrapper.Controllers
             string code = TryParse(Request.QueryString["CODE"].ToString());
             OAuthToken oauthToken = null;
             try {
-                oauthToken = OAuthToken.Request(code);
+                oauthToken = OAuthTokenController.Request(code);
             } catch {  }
 
             if (oauthToken != null) {

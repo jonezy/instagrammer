@@ -28,9 +28,13 @@ header nav {background:#ddd;clear:both;float:left;width:100%;}
   header nav ul li a:hover,
   header nav ul li a.selected {color:#fff; background:#444;}
 
-section footer {background:none; height:auto;padding:0px 0px 0px 15px;}
+section footer {background:none; height:auto;padding:0px;}
 footer {background:#eee;height:80px;}
-
+#left {float:left; width:220px;margin:10px;}
+#center {float:left; width:700px;}
+.user_feed {float:left;}
+.feed_entry {float:left;margin:0px 10px 10px 0px;width:150px;white-space:nowrap;}
+.feed_entry_caption {background:#ddd;padding:4px;font-size:12px;overflow: hidden;text-overflow: ellipsis !important;}
 /*
  * media queries for responsive design
  * these follow after primary styles so they will successfully override.
