@@ -34,12 +34,6 @@ namespace Instagram.Wrapper.Controllers
             return View(oauthToken);
         }
 
-
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         private string TryParse(string value) {
             try {
                 return value.ToString();

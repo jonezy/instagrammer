@@ -83,7 +83,6 @@
     <Content Include="Content\reset.css" />
     <Content Include="Global.asax" />
     <Content Include="Views\OAuth\AccessRequest.aspx" />
-    <Content Include="Views\OAuth\Index.aspx" />
     <Content Include="Web.config" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\jquery-1.4.1.js" />
