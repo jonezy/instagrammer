@@ -1,24 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace Instagram.Wrapper.Models {
     public class InstagramUserController : ActiveRecordBase {
-        private string accessToken;
-        
         public InstagramUserController(string token) : base(token) { }
 
-        public InstagramUser Single(string userId) {
-            string json = GetJSON(string.Format(ApiUrls.USER_URL, userId != null ? userId : "self", base._token), null);
-            InstagramSingleResponse response = Deserialize<InstagramSingleResponse>(json);
+        public InstagramUser User(string userId) {
+            string json = GetJSON(string.Format(ApiUrls.USER_URL, !string.IsNullOrEmpty(userId) ? userId : "self", base._token), null);
+            ApiSingleResponse<InstagramUser> response = Deserialize<ApiSingleResponse<InstagramUser>>(json);
 
             return response.data;
         }
 
-        public List<UserFeed> Feed() {
+        public List<UserFeed> SelfFeed() {
             string json = GetJSON(string.Format(ApiUrls.USER_FEED_URL, base._token), null);
-            FeedItems response = Deserialize<FeedItems>(json);
+            ApiResponse<UserFeed> response = Deserialize<ApiResponse<UserFeed>>(json);
+
+            return response.data;
+        }
+
+        public List<UserFeed> RecentMedia(string userId) {
+            string json = GetJSON(string.Format(ApiUrls.USER_MEDIA_URL, !string.IsNullOrEmpty(userId) ? userId : "self", base._token), null);
+            ApiResponse<UserFeed> response = Deserialize<ApiResponse<UserFeed>>(json);
 
             return response.data;
         }

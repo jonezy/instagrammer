@@ -15,9 +15,12 @@
         <a href="https://api.instagram.com/oauth/authorize/<%= queryString %>">Authenticate with instagram</a>
     <% } else { %>
     <div id="left">
-        <div class="user_badge">
-            <h2>Welcome back <%= Model.username %></h2>
-            following: <%= Model.counts.follows %>, followed by: <%= Model.counts.followed_by %>
+        <div class="user_badge clearfix">
+            <img src="<%= Model.profile_picture %>" class="shadow_2" /><h3>Welcome back <%= Model.username %></h3>
+            <div class="meta">
+                
+                following: <%= Model.counts.follows %><br />
+                followed by: <%= Model.counts.followed_by %><br /></div>
         </div>
 
     </div>

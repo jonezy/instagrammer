@@ -19,9 +19,12 @@ namespace Instagram.Wrapper.Controllers {
             }
 
             InstagramUserController controller = new InstagramUserController(userToken.access_token);
-            InstagramUser self = controller.Single(null);
-            List<UserFeed> feedItems = controller.Feed();
-            ViewData["UserFeed"] = feedItems;
+            InstagramUser self = controller.User(null);
+            List<UserFeed> userFeed = controller.SelfFeed();
+
+            List<UserFeed> selfFeed = controller.RecentMedia(null);
+
+            ViewData["UserFeed"] = userFeed;
 
             return View(self);
         }

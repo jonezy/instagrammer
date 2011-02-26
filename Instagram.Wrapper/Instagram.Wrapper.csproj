@@ -74,6 +74,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ActiveRecordBase.cs" />
+    <Compile Include="Models\ApiResponse.cs" />
+    <Compile Include="Models\ApiSingleResponse.cs" />
     <Compile Include="Models\ApiUrls.cs" />
     <Compile Include="Models\Comments.cs" />
     <Compile Include="Models\Image.cs" />
@@ -84,6 +86,7 @@
     <Compile Include="Models\OAuthToken.cs" />
     <Compile Include="Models\OAuthTokenController.cs" />
     <Compile Include="Models\Pagination.cs" />
+    <Compile Include="Models\UserFeed.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
