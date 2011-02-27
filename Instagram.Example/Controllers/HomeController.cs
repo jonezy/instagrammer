@@ -9,8 +9,8 @@ namespace Instagrammer.Example.Controllers {
         public HomeController() : base() {}
 
         public ActionResult Index() {
-            UserController controller = new UserController(userToken.access_token);
-            UserFollowsController followsController = new UserFollowsController(userToken.access_token);
+            UsersController controller = new UsersController(userToken.access_token);
+            RelationshipsController followsController = new RelationshipsController(userToken.access_token);
             InstagramUser self = controller.User(null);
             
             ViewData["UserData"] = self;

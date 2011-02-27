@@ -58,9 +58,9 @@
     <Compile Include="ApiSingleResponse.cs" />
     <Compile Include="ApiUrls.cs" />
     <Compile Include="Controllers\ControllerBase.cs" />
-    <Compile Include="Controllers\OAuthTokenController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Controllers\UserFollowsController.cs" />
+    <Compile Include="Controllers\AuthenticationController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\RelationshipsController.cs" />
     <Compile Include="Models\Comments.cs" />
     <Compile Include="Models\Counts.cs" />
     <Compile Include="Models\FeedItems.cs" />

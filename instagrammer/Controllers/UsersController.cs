@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
 namespace instagrammer {
-    public class UserController : ControllerBase {
-        public UserController(string token) : base(token) { }
+    public class UsersController : ControllerBase {
+        public UsersController(string token) : base(token) { }
 
         public InstagramUser User(string userId) {
             string json = GetJSON(string.Format(ApiUrls.USER_URL, !string.IsNullOrEmpty(userId) ? userId : "self", base._token), null);

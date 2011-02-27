@@ -8,12 +8,7 @@ namespace Instagrammer.Example.Controllers {
         protected OAuthToken userToken;
 
         public BaseController() {
-            userToken = new OAuthToken();
-
-            if (Request.Cookies[COOKIE_ID] != null) {
-                HttpCookie userCookie = Request.Cookies.Get(COOKIE_ID);
-                userToken.access_token = userCookie.Values["token"];
-            }
+            userToken = CookieHelper.GetOAuthToken(COOKIE_ID);
         }
     }
 }

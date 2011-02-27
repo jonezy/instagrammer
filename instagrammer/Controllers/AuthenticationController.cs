@@ -1,9 +1,9 @@
 ﻿using System.Web;
 
 namespace instagrammer {
-    public class OAuthTokenController : ControllerBase {
-        public OAuthTokenController(string token) : base(token) { }
-        public OAuthTokenController() : base("") { }
+    public class AuthenticationController : ControllerBase {
+        public AuthenticationController(string token) : base(token) { }
+        public AuthenticationController() : base("") { }
 
         public static OAuthToken Request(string code, string redirect_uri) {
             string dataFormat = "client_id={0}&client_secret={1}&grant_type={2}&redirect_uri={3}&code={4}";
