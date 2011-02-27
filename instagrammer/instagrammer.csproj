@@ -59,6 +59,7 @@
     <Compile Include="ApiUrls.cs" />
     <Compile Include="Controllers\ControllerBase.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
+    <Compile Include="Controllers\Extensions.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\RelationshipsController.cs" />
     <Compile Include="Models\Comments.cs" />

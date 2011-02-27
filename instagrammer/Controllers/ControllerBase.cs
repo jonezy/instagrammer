@@ -1,8 +1,6 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Net;
 using System.Runtime.Serialization;
-using System.Runtime.Serialization.Json;
 using System.Text;
 
 namespace instagrammer {
@@ -14,74 +12,39 @@ namespace instagrammer {
              _token = token;
         }
 
-        protected static T Deserialize<T>(string json) {
-            T obj = Activator.CreateInstance<T>();
-            MemoryStream ms = new MemoryStream(Encoding.Unicode.GetBytes(json));
-            DataContractJsonSerializer serializer = new DataContractJsonSerializer(obj.GetType());
-            obj = (T)serializer.ReadObject(ms);
-            ms.Close();
-            ms.Dispose();
-            return obj;
-        }
-        
-        protected static string Serialize<T>(T obj) {
-            DataContractJsonSerializer serializer = new DataContractJsonSerializer(obj.GetType());
-            MemoryStream ms = new MemoryStream();
-            serializer.WriteObject(ms, obj);
-            string retVal = Encoding.Default.GetString(ms.ToArray());
-            ms.Dispose();
-            return retVal;
-        }
-
         public static string GetJSON(string url, string postData) {
-            WebRequest webRequest = null;
-            byte[] byteSend = null;
-            Stream streamOut = null;
-            WebResponse webResponse = null;
-            StreamReader streamReader = null;
-            StreamWriter writer = null;
+            string returnValue = string.Empty;
 
             // create the request
-            webRequest = WebRequest.Create(url);
+            WebRequest webRequest = WebRequest.Create(url);
             webRequest.ContentType = "application/x-www-form-urlencoded";
-
+            
             if (!string.IsNullOrEmpty(postData)) {
-                // push the data to the stream
-                byteSend = Encoding.ASCII.GetBytes(postData);
+                // posting data to a url
+                byte[] byteSend = Encoding.ASCII.GetBytes(postData);
                 webRequest.ContentLength = byteSend.Length;
                 webRequest.Method = "POST";
 
-                streamOut = webRequest.GetRequestStream();
+                Stream streamOut = webRequest.GetRequestStream();
                 streamOut.Write(byteSend, 0, byteSend.Length);
                 streamOut.Flush();
                 streamOut.Close();
             } else {
+                // getting data
                 webRequest.Method = "GET";
             }
 
-            // deal with the response and save the file.
-            try {
-                // grab the response.
-                webResponse = webRequest.GetResponse();
-                streamReader = new StreamReader(webResponse.GetResponseStream(), Encoding.UTF8);
+            // deal with the response and return
+            WebResponse webResponse = webRequest.GetResponse();
+            StreamReader streamReader = new StreamReader(webResponse.GetResponseStream(), Encoding.UTF8);
 
-                // only try and write something if there are records in the file
-                if (streamReader.Peek() > -1) {
-                    return streamReader.ReadToEnd();
-                }
-            } catch (Exception ex) {
-                throw ex;
-            } finally {
-                if (streamReader != null) {
-                    streamReader.Close();
-                    streamReader.Dispose();
-                }
-                if (writer != null) {
-                    writer.Close();
-                    writer.Dispose();
-                }
+            if (streamReader.Peek() > -1) {
+                returnValue = streamReader.ReadToEnd();
             }
-            return null;
+            streamReader.Close();
+            streamReader.Dispose();
+
+            return returnValue;
         }
     }
 }
