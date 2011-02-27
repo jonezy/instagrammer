@@ -1,7 +1,5 @@
 h1. TODO
 
-* decide on pattern for accessing data (ActiveRecord)
 * pick one data type and go end to end with the coding
 * flush out model classes for various data types
-* extract freamework
 * build out example site, decide on features etc

@@ -8,9 +8,9 @@
     <% 
         string queryString = string.Format("?client_id={0}&redirect_uri={1}&response_type=code", "bfbdf77fbe934ffc8fbc710f6d15f75e", Server.UrlEncode("http://localhost/InstagramWrapper/OAuth/AccessRequest/"));
 
-        if (Model.id == 0) {
+        if (Model == null) {
     %>
-        <h2>Please authenticate with instagram</h2>
+        <h1>Please authenticate with instagram</h1>
         <p>You will be returned back to this page once you've granted this site access to your instagram account.</p>
         <a href="https://api.instagram.com/oauth/authorize/<%= queryString %>">Authenticate with instagram</a>
     <% } else { %>
