@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Instagrammer.Example", "Instagram.Wrapper\Instagrammer.Example.csproj", "{8A8BC3FF-9E1D-4F27-8A22-AC221468C771}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "instagrammer", "instagrammer\instagrammer.csproj", "{2B8DE952-BAFD-48FC-B31E-626178E07703}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8A8BC3FF-9E1D-4F27-8A22-AC221468C771}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A8BC3FF-9E1D-4F27-8A22-AC221468C771}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A8BC3FF-9E1D-4F27-8A22-AC221468C771}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A8BC3FF-9E1D-4F27-8A22-AC221468C771}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B8DE952-BAFD-48FC-B31E-626178E07703}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B8DE952-BAFD-48FC-B31E-626178E07703}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B8DE952-BAFD-48FC-B31E-626178E07703}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B8DE952-BAFD-48FC-B31E-626178E07703}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
