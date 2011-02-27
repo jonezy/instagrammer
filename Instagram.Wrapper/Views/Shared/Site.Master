@@ -36,6 +36,12 @@
             theme: 'light_square',
             allow_resize: true
         });
+
+        $(".recent_media a[rel^='prettyPhoto']").prettyPhoto({
+            animationSpeed: 'fast',
+            theme: 'light_square',
+            allow_resize: true
+        });
     });
 </script>
 </body>

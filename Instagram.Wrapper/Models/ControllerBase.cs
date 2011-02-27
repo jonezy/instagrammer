@@ -6,10 +6,10 @@ using System.Text;
 
 namespace Instagram.Wrapper.Models {
     [DataContract]
-    public abstract class ActiveRecordBase {
+    public abstract class ControllerBase {
         protected string _token;
 
-        public ActiveRecordBase(string token) {
+        public ControllerBase(string token) {
              _token = token;
         }
 

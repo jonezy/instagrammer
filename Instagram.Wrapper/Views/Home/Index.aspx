@@ -15,14 +15,11 @@
         <a href="https://api.instagram.com/oauth/authorize/<%= queryString %>">Authenticate with instagram</a>
     <% } else { %>
     <div id="left">
-        <div class="user_badge clearfix">
-            <img src="<%= Model.profile_picture %>" class="shadow_2" /><h3>Welcome back <%= Model.username %></h3>
-            <div class="meta">
-                
-                following: <%= Model.counts.follows %><br />
-                followed by: <%= Model.counts.followed_by %><br /></div>
-        </div>
 
+        <% Html.RenderPartial("UserBadge", ViewData["UserData"]); %>
+        <% Html.RenderPartial("RecentMedia", ViewData["RecentMedia"]); %>
+        <% Html.RenderPartial("Following", ViewData["Following"]); %>
+        <% Html.RenderPartial("FollowedBy", ViewData["FollowedBy"]); %>
     </div>
     <div id="center">
         <% Html.RenderPartial("UserFeed", ViewData["UserFeed"]); %>    

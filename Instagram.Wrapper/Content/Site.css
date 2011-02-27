@@ -35,17 +35,23 @@ header nav {background:#ddd;clear:both;float:left;width:100%;}
 section footer {background:none; height:auto;padding:0px;}
 footer {background:#eee;height:80px;}
 
-#left {float:left; width:170px;margin:0px 10px 0 0;}
-#center {float:left; width:800px;}
+#left {float:left; width:255px;margin:0px 30px 0 0;}
+#center {float:left; width:650px;}
 
 .user_badge {}
     .user_badge img {float:left;width:37px;height:38px;margin-right:5px;}
-    .user_badge .meta {clear:both;margin-top:10px;font-size:90%;}
+    .user_badge .meta {font-size:90%;}
     .user_badge .meta h3 {margin-bottom:3px;}
     
 .user_feed {float:left;}
-.feed_entry {float:left;margin:0px 10px 10px 0px;width:150px;white-space:nowrap;}
-.feed_entry_caption {background:#ddd;padding:4px;font-size:12px;min-height:14px;overflow: hidden;text-overflow: ellipsis !important;}
+.user_feed .feed_entry {float:left;margin:0px 10px 10px 0px;width:150px;white-space:nowrap;}
+.user_feed .feed_entry_caption {background:#ddd;padding:4px;font-size:12px;min-height:14px;overflow: hidden;text-overflow: ellipsis !important;}
+
+.recent_media { margin-top:20px; }
+.recent_media .feed_entry { float:left; margin:0 10px 10px 0; }
+
+.following {margin-top:20px;clear:both;}
+.following img {width:37px;height:38px;float:left;margin:0 5px 5px 0;}
 
 /*
  * media queries for responsive design

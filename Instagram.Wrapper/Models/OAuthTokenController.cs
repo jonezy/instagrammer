@@ -1,7 +1,7 @@
 ﻿using System.Web;
 
 namespace Instagram.Wrapper.Models {
-    public class OAuthTokenController : ActiveRecordBase {
+    public class OAuthTokenController : ControllerBase {
         public OAuthTokenController(string token) : base(token) { }
         public OAuthTokenController() : base("") { }
 

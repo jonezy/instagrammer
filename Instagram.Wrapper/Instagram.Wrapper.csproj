@@ -73,26 +73,64 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ActiveRecordBase.cs" />
-    <Compile Include="Models\ApiResponse.cs" />
-    <Compile Include="Models\ApiSingleResponse.cs" />
-    <Compile Include="Models\ApiUrls.cs" />
-    <Compile Include="Models\Comments.cs" />
-    <Compile Include="Models\Image.cs" />
-    <Compile Include="Models\InstagramUser.cs" />
-    <Compile Include="Models\InstagramUserController.cs" />
-    <Compile Include="Models\Location.cs" />
-    <Compile Include="Models\Meta.cs" />
-    <Compile Include="Models\OAuthToken.cs" />
-    <Compile Include="Models\OAuthTokenController.cs" />
-    <Compile Include="Models\Pagination.cs" />
-    <Compile Include="Models\UserFeed.cs" />
+    <Compile Include="Models\ControllerBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\ApiResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\ApiSingleResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\ApiUrls.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Comments.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Counts.cs" />
+    <Compile Include="Models\FeedItems.cs" />
+    <Compile Include="Models\Image.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Images.cs" />
+    <Compile Include="Models\InstagramUser.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\UserController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\ItemComments.cs" />
+    <Compile Include="Models\Likes.cs" />
+    <Compile Include="Models\Location.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Meta.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\OAuthToken.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\OAuthTokenController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Pagination.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\UserFeed.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\UserFollowsController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\messages.css" />
     <Content Include="Content\reset.css" />
     <Content Include="Global.asax" />
+    <Content Include="Views\Home\FollowedBy.ascx" />
+    <Content Include="Views\Home\Following.ascx" />
+    <Content Include="Views\Home\RecentMedia.ascx" />
+    <Content Include="Views\Home\UserBadge.ascx" />
     <Content Include="Views\Home\UserFeed.ascx" />
     <Content Include="Views\OAuth\AccessRequest.aspx" />
     <Content Include="Web.config" />

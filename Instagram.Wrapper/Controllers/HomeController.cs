@@ -18,13 +18,15 @@ namespace Instagram.Wrapper.Controllers {
                 userToken.access_token = userCookie.Values["token"];
             }
 
-            InstagramUserController controller = new InstagramUserController(userToken.access_token);
+            UserController controller = new UserController(userToken.access_token);
             InstagramUser self = controller.User(null);
-            List<UserFeed> userFeed = controller.SelfFeed();
+            ViewData["UserData"] = self;
+            ViewData["UserFeed"] = controller.SelfFeed();
+            ViewData["RecentMedia"] = controller.RecentMedia(null);
 
-            List<UserFeed> selfFeed = controller.RecentMedia(null);
-
-            ViewData["UserFeed"] = userFeed;
+            UserFollowsController followsController = new UserFollowsController(userToken.access_token);
+            ViewData["Following"] = followsController.Follows(null);
+            ViewData["FollowedBy"] = followsController.FollowedBy(null);
 
             return View(self);
         }

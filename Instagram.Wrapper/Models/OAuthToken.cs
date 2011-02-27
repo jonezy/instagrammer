@@ -12,7 +12,7 @@ namespace Instagram.Wrapper.Models {
         public InstagramUser user {get;set;}
     }
 
-    public partial class OAuthToken:ActiveRecordBase {
+    public partial class OAuthToken:ControllerBase {
 
     }
 }

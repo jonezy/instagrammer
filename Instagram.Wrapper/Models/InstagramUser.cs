@@ -2,7 +2,7 @@
 
 namespace Instagram.Wrapper.Models {
     [DataContract]
-    public partial class InstagramUser {
+    public class InstagramUser {
         [DataMember]
         public int id { get; set; }
         
