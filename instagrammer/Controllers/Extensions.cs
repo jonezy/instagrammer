@@ -4,7 +4,7 @@ using System.Runtime.Serialization.Json;
 using System.Text;
 
 namespace instagrammer {
-    internal static partial class Extensions {
+    public static partial class Extensions {
 
         public static T Deserialize<T>(this string json) {
             T obj = Activator.CreateInstance<T>();

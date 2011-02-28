@@ -33,19 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.ComponentModel.DataAnnotations">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
     <Reference Include="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Runtime.Serialization">
-      <RequiredTargetFramework>3.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.ServiceModel.Web">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -67,9 +55,12 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\FriendsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OAuthController.cs" />
+    <Compile Include="Controllers\PhotosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -133,12 +124,17 @@
     <Content Include="Content\reset.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery.prettyPhoto.js" />
-    <Content Include="Views\Home\FollowedBy.ascx" />
-    <Content Include="Views\Home\Following.ascx" />
-    <Content Include="Views\Home\RecentMedia.ascx" />
-    <Content Include="Views\Home\UserBadge.ascx" />
-    <Content Include="Views\Home\UserFeed.ascx" />
+    <Content Include="Views\Friends\Followers.aspx" />
+    <Content Include="Views\Friends\Index.aspx" />
+    <Content Include="Views\Photos\Index.aspx" />
+    <Content Include="Views\Shared\FollowedBy.ascx" />
+    <Content Include="Views\Shared\Following.ascx" />
+    <Content Include="Views\Shared\FriendRecords.ascx" />
+    <Content Include="Views\Shared\RecentMedia.ascx" />
+    <Content Include="Views\Shared\UserBadge.ascx" />
+    <Content Include="Views\Shared\UserFeed.ascx" />
     <Content Include="Views\OAuth\AccessRequest.aspx" />
+    <Content Include="Views\Shared\UserPhotos.ascx" />
     <Content Include="Web.config" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\jquery-1.4.1.js" />

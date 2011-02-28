@@ -12,7 +12,7 @@ namespace instagrammer {
              _token = token;
         }
 
-        public static string GetJSON(string url, string postData) {
+        public virtual string GetJSON(string url, string postData) {
             string returnValue = string.Empty;
 
             // create the request

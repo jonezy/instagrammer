@@ -1,0 +1,12 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
+	Your photo's
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
+    <h2>Your Photo's</h2>
+    <% Html.RenderPartial("UserPhotos", ViewData["Photos"]); %>
+    
+</asp:Content>

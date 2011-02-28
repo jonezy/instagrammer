@@ -19,14 +19,38 @@
   <nav>
     <ul>
       <li><%= Html.ActionLink("Home", "Index", "Home") %></li>
+      <li><%= Html.ActionLink("Friends", "Index", "Friends")%></li>
+      <li><%= Html.ActionLink("Photos", "Index", "Photos")%></li>
       <li><%= Html.ActionLink("About", "About", "Home")%></li>
+      <li><%= Html.ActionLink("Log Out", "Logout", "Security")%></li>
     </ul>
   </nav>
 </header>
 <section class="clearfix">
-    <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+    <% string queryString = string.Format("?client_id={0}&redirect_uri={1}&response_type=code", "bfbdf77fbe934ffc8fbc710f6d15f75e", Server.UrlEncode("http://localhost/InstagramWrapper/OAuth/AccessRequest/")); %>
+    
+    <% if (ViewData["UserData"] == null) { %>
+        <div id="authenticate">
+            <h1>Welcome to instagrammer</h1>
+            <p>To use this site, you must first grant access to allow instagram to pull your user data so that it can be shown on this site.</p>
+            <p>You will be returned back to this page once you've granted this site access to your instagram account.</p>
+            <br />
+            <a href="https://api.instagram.com/oauth/authorize/<%= queryString %>" class="auth">Authenticate with instagram</a>
+        </div>
+    <% } else { %>
+        <div id="left">
+            <% Html.RenderPartial("UserBadge", ViewData["UserData"]); %>
+            <% Html.RenderPartial("RecentMedia", ViewData["RecentMedia"]); %>
+            <% Html.RenderPartial("Following", ViewData["Following"]); %>
+            <% Html.RenderPartial("FollowedBy", ViewData["FollowedBy"]); %>    
+        </div>
+        <div id="center">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+    <% } %>
 </section>
 <footer></footer>
+
 <script src="<%= Url.Content("~/Scripts/jquery-1.4.1.min.js") %>" type="text/javascript"></script>
 <script src="<%= Url.Content("~/Scripts/jquery.prettyPhoto.js") %>" type="text/javascript"></script>
 <script type="text/javascript">
@@ -41,6 +65,25 @@
             animationSpeed: 'fast',
             theme: 'light_square',
             allow_resize: true
+        });
+    });
+
+    $(function() {
+        $("a.test").click(function(e) {
+            $.ajax({
+                type: "GET",
+                url: "Home/TestResult",
+                dataType: "json",
+                async: true,
+                cache: false,
+                success: function(data) {
+                    alert(data.username);
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    alert(textStatus);
+                }
+            });
+            return false;
         });
     });
 </script>

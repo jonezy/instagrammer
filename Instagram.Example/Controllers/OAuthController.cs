@@ -12,9 +12,10 @@ namespace Instagrammer.Example.Controllers
         public ActionResult AccessRequest() {
 
             string code = TryParse(Request.QueryString["CODE"].ToString());
+            AuthenticationController controller = new AuthenticationController();
             OAuthToken oauthToken = null;
             try {
-                oauthToken = AuthenticationController.Request(code, Server.UrlEncode("http://localhost/InstagramWrapper/OAuth/AccessRequest/"));
+                oauthToken = controller.Request(code, Server.UrlEncode("http://localhost/InstagramWrapper/OAuth/AccessRequest/"));
             } catch {  }
 
             if (oauthToken != null) {
@@ -37,6 +38,4 @@ namespace Instagrammer.Example.Controllers
             } catch { return value; }
         }
     }
-
-    
 }
