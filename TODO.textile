@@ -1,5 +1,6 @@
 h1. TODO
 
+* rename controllers to clients?
 * implement the realtime api
 * finish last few standard api endpoints
 * ensure all api methods accept and pass additional params
