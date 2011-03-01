@@ -2,8 +2,8 @@
     public static class ApiUrls {
         public static string OAUTHTOKEN_REQUEST_URL = "https://api.instagram.com/oauth/access_token";
         private static string API_BASE = "https://api.instagram.com/v1";
+
         // Users
-        // TODO: fill in querystring params
         public static string USER_URL = API_BASE + "/users/{0}?access_token={1}";
         public static string USER_FEED_URL = API_BASE + "/users/self/feed?access_token={0}";
         public static string USER_MEDIA_URL = API_BASE + "/users/{0}/media/recent/?access_token={1}";
@@ -18,7 +18,12 @@
         public static string MEDIA_SEARCH_URL = API_BASE + "/media/search?access_token={0}";
         public static string MEDIA_POPULAR_URL = API_BASE + "/media/popular?access_token={0}";
         public static string COMMENTS_URL = API_BASE + "/media/{0}/comments?access_token={1}";
+        public static string COMMENTS_ADD_URL = API_BASE + "/media/{0}/comments?access_token={1}";
+        public static string COMMENTS_DELETE_URL = API_BASE + "/media/{0}/comments?{1}&access_token={2}";
         public static string LIKES_URL = API_BASE + "/media/{0}/likes?access_token={1}";
+        public static string LIKES_ADD_URL = API_BASE + "/media/{0}/likes?access_token={1}";
+        public static string LIKES_DELETE_URL = API_BASE + "/media/{0}/likes?access_token={1}";
+
 
         //tags
         public static string TAGS_URL = API_BASE + "/tags/{0}?access_token={1}";

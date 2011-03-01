@@ -13,22 +13,34 @@ namespace instagrammer {
         }
 
         public virtual string GetJSON(string url, string postData) {
+            return GetJSON(url, postData, null);
+        }
+
+        public virtual string GetJSON(string url, string postData, string method) {
             string returnValue = string.Empty;
 
             // create the request
             WebRequest webRequest = WebRequest.Create(url);
             webRequest.ContentType = "application/x-www-form-urlencoded";
-            
-            if (!string.IsNullOrEmpty(postData)) {
-                // posting data to a url
-                byte[] byteSend = Encoding.ASCII.GetBytes(postData);
-                webRequest.ContentLength = byteSend.Length;
-                webRequest.Method = "POST";
 
-                Stream streamOut = webRequest.GetRequestStream();
-                streamOut.Write(byteSend, 0, byteSend.Length);
-                streamOut.Flush();
-                streamOut.Close();
+            if (!string.IsNullOrEmpty(method)) {
+
+            }
+
+            if (!string.IsNullOrEmpty(method)) {
+                webRequest.Method = method;
+
+                if (!string.IsNullOrEmpty(postData)) {
+                    // posting data to a url
+                    byte[] byteSend = Encoding.ASCII.GetBytes(postData);
+                    webRequest.ContentLength = byteSend.Length;
+
+
+                    Stream streamOut = webRequest.GetRequestStream();
+                    streamOut.Write(byteSend, 0, byteSend.Length);
+                    streamOut.Flush();
+                    streamOut.Close();
+                }
             } else {
                 // getting data
                 webRequest.Method = "GET";

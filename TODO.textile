@@ -1,5 +1,7 @@
 h1. TODO
 
-* pick one data type and go end to end with the coding
-* flush out model classes for various data types
-* build out example site, decide on features etc
+* implement the realtime api
+* finish last few standard api endpoints
+* ensure all api methods accept and pass additional params
+* figure out why I can't page back
+* some kind of tests (against the live api (functional) against stored json data (unit))
