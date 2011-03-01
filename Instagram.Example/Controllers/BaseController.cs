@@ -9,6 +9,8 @@ namespace Instagrammer.Example.Controllers {
 
         public BaseController() {
             userToken = CookieHelper.GetOAuthToken(COOKIE_ID);
+
+            ViewData["UserToken"] = userToken;
         }
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext) {
@@ -16,14 +18,15 @@ namespace Instagrammer.Example.Controllers {
                 try {
                     UsersController controller = new UsersController(userToken.access_token);
                     RelationshipsController followsController = new RelationshipsController(userToken.access_token);
+                    ApiResponse<UserFeed> recentMedia = controller.RecentMedia(null, null,null);
 
                     ViewData["UserData"] = controller.User(null);
-                    ViewData["UserFeed"] = controller.SelfFeed();
-                    ViewData["RecentMedia"] = controller.RecentMedia(null).Take(6).ToList();
+                    ViewData["RecentMedia"] = recentMedia.data.Take(6).ToList();
                     ViewData["Following"] = followsController.Follows(null).Take(12).ToList();
                     ViewData["FollowedBy"] = followsController.FollowedBy(null).Take(12).ToList();
                 } catch { }
             }
+
             base.OnActionExecuting(filterContext);
         }
     }

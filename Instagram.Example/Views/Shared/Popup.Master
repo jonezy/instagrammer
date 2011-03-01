@@ -1,0 +1,19 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+      <link rel="stylesheet" href="<%=Url.Content("~/Content/site.css") %>" media="screen" />
+      <link rel="stylesheet" href="<%=Url.Content("~/Content/prettyPhoto.css") %>" media="screen" />
+      <link href="http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold" rel="stylesheet" type="text/css">    
+</head>
+<body>
+    <section id="popup">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </section>
+</body>
+</html>

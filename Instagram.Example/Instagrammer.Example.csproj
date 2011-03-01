@@ -65,6 +65,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CookieHelper.cs" />
+    <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +163,11 @@
       <Project>{2B8DE952-BAFD-48FC-B31E-626178E07703}</Project>
       <Name>instagrammer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Photos\Details.aspx" />
+    <Content Include="Views\Shared\PhotoDetails.ascx" />
+    <Content Include="Views\Shared\Popup.Master" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

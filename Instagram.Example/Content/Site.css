@@ -18,7 +18,7 @@ a.auth {background:pink;padding:10px;color:#444;border:solid 1px;}
 
 body {
   background:#fff;
-  font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+  font-family: sans-serif;
   text-align:center;
 }
 
@@ -26,6 +26,7 @@ div#authenticate {padding:10px;margin-bottom:10px;}
 
 header, section, footer {width:1000px; margin:0 auto 0 auto;text-align:left;}
 section, footer {padding:10px 0 10px 0;}
+section#popup {width:500px;}
 
 header {background:#eee;}
   header a#logo {float:left;padding:5px;color:#444;padding:20px 0 20px 10px;font-size:2em;font-family:'Droid sans';font-weight:bold;}
@@ -76,6 +77,13 @@ footer {background:#eee;height:80px;}
 .user_photos {}
     .user_photo { clear:both; margin-bottom:20px; }
     .user_photo img { float:left; margin-right:10px; }
+    
+.pager.top {border-bottom:2px solid #444;}
+.pager.bottom {border-top:2px solid #444;}
+.pager {padding:2px;margin-bottom:10px;}
+.pager a.back {float:left;margin-right:10px;}
+    .pager a {padding:5px;background:#444;color:#fff;display:block;float:right;}
+    
 /*
  * media queries for responsive design
  * these follow after primary styles so they will successfully override.

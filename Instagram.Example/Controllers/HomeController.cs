@@ -9,11 +9,13 @@ namespace Instagrammer.Example.Controllers {
         public HomeController() : base() {}
 
         public ActionResult Index() {
-            if (!string.IsNullOrEmpty(base.userToken.access_token)) {
+            if (base.userToken != null) {
                 UsersController controller = new UsersController(userToken.access_token);
-                return View(controller.User(null));
+                try {
+                    ViewData["UserFeed"] = controller.SelfFeed();
+                    return View(controller.User(null));
+                } catch { }
             }
-
             return View ();
         }
 

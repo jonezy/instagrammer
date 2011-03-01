@@ -29,7 +29,7 @@
 <section class="clearfix">
     <% string queryString = string.Format("?client_id={0}&redirect_uri={1}&response_type=code", "bfbdf77fbe934ffc8fbc710f6d15f75e", Server.UrlEncode("http://localhost/InstagramWrapper/OAuth/AccessRequest/")); %>
     
-    <% if (ViewData["UserData"] == null) { %>
+    <% if (ViewData["UserToken"] == null) { %>
         <div id="authenticate">
             <h1>Welcome to instagrammer</h1>
             <p>To use this site, you must first grant access to allow instagram to pull your user data so that it can be shown on this site.</p>
@@ -58,13 +58,15 @@
         $(".user_feed a[rel^='prettyPhoto']").prettyPhoto({
             animationSpeed: 'fast',
             theme: 'light_square',
-            allow_resize: true
+            allow_resize: false,
+            show_title: false
         });
 
         $(".recent_media a[rel^='prettyPhoto']").prettyPhoto({
             animationSpeed: 'fast',
             theme: 'light_square',
-            allow_resize: true
+            allow_resize: false,
+            show_title: false
         });
     });
 

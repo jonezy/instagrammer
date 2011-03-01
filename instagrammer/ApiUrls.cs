@@ -11,5 +11,8 @@
         // follows
         public static string FOLLOWS_URL = "https://api.instagram.com/v1/users/{0}/follows/?access_token={1}";
         public static string FOLLOWEDBY_URL = "https://api.instagram.com/v1/users/{0}/followed-by?access_token={1}";
+
+        // media
+        public static string MEDIA_URL = "https://api.instagram.com/v1/media/{0}?access_token={1}";
     }
 }

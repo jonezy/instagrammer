@@ -18,11 +18,18 @@ namespace instagrammer {
             return response.data;
         }
 
-        public List<UserFeed> RecentMedia(string userId) {
-            string json = GetJSON(string.Format(ApiUrls.USER_MEDIA_URL, !string.IsNullOrEmpty(userId) ? userId : "self", base._token), null);
+        public ApiResponse<UserFeed> RecentMedia(string userId, string next_max_id, string prev_max_id) {
+            string requestUrl = string.Format(ApiUrls.USER_MEDIA_URL, !string.IsNullOrEmpty(userId) ? userId : "self", base._token);
+            
+            if (!string.IsNullOrEmpty(next_max_id))
+                requestUrl = string.Format("{0}&max_id={1}", requestUrl, next_max_id);
+            if (!string.IsNullOrEmpty(prev_max_id))
+                requestUrl = string.Format("{0}&max_id={1}", requestUrl, prev_max_id);
+
+            string json = GetJSON(requestUrl, null);
             ApiResponse<UserFeed> response = json.Deserialize<ApiResponse<UserFeed>>();
 
-            return response.data;
+            return response;
         }
     }
 }
