@@ -58,7 +58,7 @@ namespace instagrammer {
         /// <returns>An ApiResponse with a ist of users that match the query</returns>
         public ApiResponse<InstagramUser> Search(string query) {
             string json = GetJSON(string.Format(ApiUrls.USER_SEARCH_URL, query, base._token), null);
-            ApiResponse<FeedItem> response = json.Deserialize<ApiResponse<FeedItem>>();
+            ApiResponse<InstagramUser> response = json.Deserialize<ApiResponse<InstagramUser>>();
 
             return response;
         }
@@ -110,7 +110,7 @@ namespace instagrammer {
         /// <returns>An ApiSingleResponse with a RelationshipStatus record</returns>
         public ApiSingleResponse<RelationshipStatus> Relationship(string foreignUserId) {
             string json = GetJSON(string.Format(ApiUrls.RELATIONSHIP_URL, foreignUserId, base._token), null);
-            ApiResponse<RelationshipStatus> response = json.Deserialize<ApiResponse<RelationshipStatus>>();
+            ApiSingleResponse<RelationshipStatus> response = json.Deserialize<ApiSingleResponse<RelationshipStatus>>();
 
             return response;
         }
