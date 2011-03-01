@@ -2,7 +2,9 @@
 
 namespace instagrammer {
     [DataContract(Namespace = "data")]
-    public class UserFeed {
+    public class FeedItem {
+        [DataMember]
+        public string distance { get; set; }
         [DataMember]
         public Location location { get; set; }
         [DataMember]

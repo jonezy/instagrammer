@@ -4,22 +4,22 @@ using instagrammer;
 namespace Instagrammer.Example.Controllers {
     [HandleError]
     public class FriendsController : BaseController {
-        public FriendsController() : base() { }
-        //
-        // GET: /Friends/
+        UsersController controller;
+        public FriendsController() : base() { 
+            controller = new UsersController(base.userToken.access_token); 
+        }
 
         public ActionResult Index() {
             if (!string.IsNullOrEmpty(base.userToken.access_token)) {
-                RelationshipsController controller = new RelationshipsController(base.userToken.access_token);
-                ViewData["Follows"] = controller.Follows(null);
+
+                ViewData["Follows"] = controller.Follows(null).data;
             }
             return View();
         }
 
         public ActionResult Followers() {
             if (!string.IsNullOrEmpty(base.userToken.access_token)) {
-                RelationshipsController controller = new RelationshipsController(base.userToken.access_token);
-                ViewData["Followers"] = controller.FollowedBy(null);
+                ViewData["Followers"] = controller.FollowedBy(null).data;
             }
             return View();
         }

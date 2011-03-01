@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using instagrammer;
 
 namespace Instagrammer.Example.Controllers {
@@ -12,8 +11,8 @@ namespace Instagrammer.Example.Controllers {
             if (base.userToken != null) {
                 UsersController controller = new UsersController(userToken.access_token);
                 try {
-                    ViewData["UserFeed"] = controller.SelfFeed();
-                    return View(controller.User(null));
+                    ViewData["UserFeed"] = controller.SelfFeed().data;
+                    return View(controller.User(null).data);
                 } catch { }
             }
             return View ();

@@ -3,9 +3,9 @@
 @import url("forms.css");
 
  /* put your styles in here */
-h1 {font-size:2em;font-family:'Droid sans';}
-h2 {font-family:'Droid sans';}
-h3 {font-family:'Droid sans';}
+h1 {font-size:2em;font-family:'Droid sans', Sans-Serif;}
+h2 {font-family:'Droid sans', Sans-Serif;}
+h3 {font-family:'Droid sans', Sans-Serif;}
 h3 a {-webkit-box-shadow: 0px 0px 0px ;-moz-box-shadow: 0px 0px 0px ;box-shadow: 0px 0px 0px;color:#fff;font-size:11px;}
 p {margin: 1em 0 1em 0;}
 
@@ -35,7 +35,7 @@ header {background:#eee;}
 header nav {background:#ddd;clear:both;float:left;width:100%;}
   header nav ul,
   header nav ul li {float:left;}
-  header nav ul li a {color:#444;padding:10px;display:block;}
+  header nav ul li a {font-family:'Droid sans',sans-serif;color:#444;padding:10px;display:block;font-weight:bold;}
   header nav ul li a:hover,
   header nav ul li a.selected {color:#fff; background:#444;}
 

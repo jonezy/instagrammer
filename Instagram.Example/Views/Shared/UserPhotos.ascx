@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<ApiResponse<UserFeed>>" %>
+﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<ApiResponse<FeedItem>>" %>
 <%@ Import Namespace="instagrammer" %>
 
 <div class="user_photos">

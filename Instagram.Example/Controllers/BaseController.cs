@@ -17,13 +17,13 @@ namespace Instagrammer.Example.Controllers {
             if (userToken != null) {
                 try {
                     UsersController controller = new UsersController(userToken.access_token);
-                    RelationshipsController followsController = new RelationshipsController(userToken.access_token);
-                    ApiResponse<UserFeed> recentMedia = controller.RecentMedia(null, null,null);
+                    ApiResponse<FeedItem> recentMedia = controller.RecentMedia(null, null, null);
 
-                    ViewData["UserData"] = controller.User(null);
-                    ViewData["RecentMedia"] = recentMedia.data.Take(6).ToList();
-                    ViewData["Following"] = followsController.Follows(null).Take(12).ToList();
-                    ViewData["FollowedBy"] = followsController.FollowedBy(null).Take(12).ToList();
+                    ViewData["UserData"] = controller.User(null).data;
+                    if(recentMedia != null) 
+                        ViewData["RecentMedia"] = recentMedia.data.Take(6).ToList();
+                    ViewData["Following"] = controller.Follows(null).data.Take(12).ToList();
+                    ViewData["FollowedBy"] = controller.FollowedBy(null).data.Take(12).ToList();
                 } catch { }
             }
 

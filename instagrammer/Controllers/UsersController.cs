@@ -4,21 +4,21 @@ namespace instagrammer {
     public class UsersController : ControllerBase {
         public UsersController(string token) : base(token) { }
 
-        public InstagramUser User(string userId) {
+        public ApiSingleResponse<InstagramUser> User(string userId) {
             string json = GetJSON(string.Format(ApiUrls.USER_URL, !string.IsNullOrEmpty(userId) ? userId : "self", base._token), null);
             ApiSingleResponse<InstagramUser> response = json.Deserialize<ApiSingleResponse<InstagramUser>>();
 
-            return response.data;
+            return response;
         }
 
-        public List<UserFeed> SelfFeed() {
+        public ApiResponse<FeedItem> SelfFeed() {
             string json = GetJSON(string.Format(ApiUrls.USER_FEED_URL, base._token), null);
-            ApiResponse<UserFeed> response = json.Deserialize<ApiResponse<UserFeed>>();
+            ApiResponse<FeedItem> response = json.Deserialize<ApiResponse<FeedItem>>();
 
-            return response.data;
+            return response;
         }
 
-        public ApiResponse<UserFeed> RecentMedia(string userId, string next_max_id, string prev_max_id) {
+        public ApiResponse<FeedItem> RecentMedia(string userId, string next_max_id, string prev_max_id) {
             string requestUrl = string.Format(ApiUrls.USER_MEDIA_URL, !string.IsNullOrEmpty(userId) ? userId : "self", base._token);
             
             if (!string.IsNullOrEmpty(next_max_id))
@@ -27,7 +27,42 @@ namespace instagrammer {
                 requestUrl = string.Format("{0}&max_id={1}", requestUrl, prev_max_id);
 
             string json = GetJSON(requestUrl, null);
-            ApiResponse<UserFeed> response = json.Deserialize<ApiResponse<UserFeed>>();
+            ApiResponse<FeedItem> response = json.Deserialize<ApiResponse<FeedItem>>();
+
+            return response;
+        }
+
+        public ApiResponse<FeedItem> Search(string query) {
+            string json = GetJSON(string.Format(ApiUrls.USER_SEARCH_URL, query, base._token), null);
+            ApiResponse<FeedItem> response = json.Deserialize<ApiResponse<FeedItem>>();
+
+            return response;
+        }
+
+        public ApiResponse<InstagramUser> Follows(string userId) {
+            string json = GetJSON(string.Format(ApiUrls.FOLLOWS_URL, !string.IsNullOrEmpty(userId) ? userId : "self", base._token), null);
+            ApiResponse<InstagramUser> response = json.Deserialize<ApiResponse<InstagramUser>>();
+
+            return response;
+        }
+
+        public ApiResponse<InstagramUser> FollowedBy(string userId) {
+            string json = GetJSON(string.Format(ApiUrls.FOLLOWEDBY_URL, !string.IsNullOrEmpty(userId) ? userId : "self", base._token), null);
+            ApiResponse<InstagramUser> response = json.Deserialize<ApiResponse<InstagramUser>>();
+
+            return response;
+        }
+
+        public ApiResponse<InstagramUser> RequestedBy() {
+            string json = GetJSON(string.Format(ApiUrls.REQUESTEDBY_URL, base._token), null);
+            ApiResponse<InstagramUser> response = json.Deserialize<ApiResponse<InstagramUser>>();
+
+            return response;
+        }
+
+        public ApiResponse<RelationshipStatus> Relationship(string foreignUserId) {
+            string json = GetJSON(string.Format(ApiUrls.RELATIONSHIP_URL, foreignUserId, base._token), null);
+            ApiResponse<RelationshipStatus> response = json.Deserialize<ApiResponse<RelationshipStatus>>();
 
             return response;
         }

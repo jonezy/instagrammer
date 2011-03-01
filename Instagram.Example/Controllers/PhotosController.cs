@@ -1,20 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using instagrammer;
 
 namespace Instagrammer.Example.Controllers {
     public class PhotosController : BaseController {
-        public PhotosController() : base() { }
+        UsersController controller;
+        public PhotosController() : base() {
+            controller = new UsersController(base.userToken.access_token);
+        }
 
         //
         // GET: /Photos/
         public ActionResult Index() {
             try {
-                UsersController controller = new UsersController(base.userToken.access_token);
-                ApiResponse<UserFeed> media = controller.RecentMedia(null, null, null);
+                ApiResponse<FeedItem> media = controller.RecentMedia(null, null, null);
 
                 ViewData["PreviousPage"] = "";
                 ViewData["Photos"] = media;
@@ -25,8 +23,8 @@ namespace Instagrammer.Example.Controllers {
         public ActionResult Next() {
             string next_max_id = RouteData.Values["id"] != null ? RouteData.Values["id"].ToString() : "";
             UsersController controller = new UsersController(base.userToken.access_token);
-            ApiResponse<UserFeed> media = controller.RecentMedia(null, next_max_id, null);
-
+            ApiResponse<FeedItem> media = controller.RecentMedia(null, next_max_id, null);
+            
             ViewData["PreviousPage"] = media.data[0].id;
             ViewData["Photos"] = media;
 
@@ -35,8 +33,7 @@ namespace Instagrammer.Example.Controllers {
 
         public ActionResult Previous() {
             string prev_max_id = RouteData.Values["id"] != null ? RouteData.Values["id"].ToString() : "";
-            UsersController controller = new UsersController(base.userToken.access_token);
-            ApiResponse<UserFeed> media = controller.RecentMedia(null, null, prev_max_id);
+            ApiResponse<FeedItem> media = controller.RecentMedia(null, null, prev_max_id);
 
             ViewData["PreviousPage"] = media.data[0].id;
             ViewData["Photos"] = media;
