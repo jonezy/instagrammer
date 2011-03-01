@@ -55,7 +55,6 @@ footer {background:#eee;height:80px;}
     .user_badge .meta .left {float:left;width:50%;}
     .user_badge .meta .right {float:right;width:50%;}
   
-    
 .feed_entry_caption {background:#ddd;padding:4px;font-size:11px;clear:both;margin:0px;min-height:14px;overflow: hidden;text-overflow: ellipsis !important;}
 .feed_entry_header {background:#444;color:#fff;padding:4px;font-size:12px;min-height:16px;margin-bottom:1px;}
     
@@ -76,6 +75,7 @@ footer {background:#eee;height:80px;}
     
 .user_photos {}
     .user_photo { clear:both; margin-bottom:20px; }
+    .user_photo .meta h3 span {float:right;font-weight:normal;font-size:80%;font-family:sans-serif;}
     .user_photo img { float:left; margin-right:10px; }
     
 .pager.top {border-bottom:2px solid #444;}

@@ -3,13 +3,12 @@
 <div class="user_photo clearfix">
     <img src="<%= Model.images.low_resolution.url %>" width="<%= Convert.ToInt32(Model.images.low_resolution.width)%>" height="<%= Convert.ToInt32(Model.images.low_resolution.height) %>" alt="" />
     <div class="meta">
-        <h3><%= Model.caption != null ? Model.caption.text : "N/A" %></h3>
-        <% if (Model.location != null) { %>
-        location: <%= !string.IsNullOrEmpty(Model.location.name) ? Model.location.name : "N/A"%><br />
-        <% } %>
-        taken: <%= Convert.ToDouble(Model.created_time).ConvertFromUnixTimestamp() %><br />
+        <h3><%= Model.caption != null ? Model.caption.text : "N/A" %><span class="photo_date"><%= Html.FormatReadableDate(Convert.ToDouble(Model.created_time).ConvertFromUnixTimestamp()) %></span></h3>
+        <% if (Model.location != null && !string.IsNullOrEmpty(Model.location.name)) { %> l: <%= Model.location.name  %> <% } %>f: <%= Model.filter %><br /><br />
+
         comments: <%= Model.comments.count %><br />
-        likes: <%= Model.likes.count %><br />
-        filter: <%= Model.filter %>
+        likes: <%= Html.DelimetedListOfUsers(Model.likes.data) %>
+        
+
     </div>
 </div> 
