@@ -1,8 +1,9 @@
 h1. TODO
 
+* finish POST and DELETE based client calls (add comment/tag etc)
 * rename controllers to clients?
 * implement the realtime api
-* finish last few standard api endpoints
 * ensure all api methods accept and pass additional params
-* figure out why I can't page back
+  * start with paging
+  * then move to search methods
 * some kind of tests (against the live api (functional) against stored json data (unit))

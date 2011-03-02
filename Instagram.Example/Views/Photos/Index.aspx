@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Your Photo's</h2>
+    <h2>Your Photo's<% Html.RenderPartial("SubNav", ViewData["SubNavItems"]); %></h2>
     <% Html.RenderPartial("UserPhotos", ViewData["Photos"]); %>
     
 </asp:Content>

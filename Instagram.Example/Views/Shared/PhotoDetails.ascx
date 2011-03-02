@@ -3,11 +3,29 @@
 <div class="user_photo clearfix">
     <img src="<%= Model.images.low_resolution.url %>" width="<%= Convert.ToInt32(Model.images.low_resolution.width)%>" height="<%= Convert.ToInt32(Model.images.low_resolution.height) %>" alt="" />
     <div class="meta">
-        <h3><%= Model.caption != null ? Model.caption.text : "N/A" %><span class="photo_date"><%= Html.FormatReadableDate(Convert.ToDouble(Model.created_time).ConvertFromUnixTimestamp()) %></span></h3>
-        <% if (Model.location != null && !string.IsNullOrEmpty(Model.location.name)) { %> l: <%= Model.location.name  %> <% } %>f: <%= Model.filter %><br /><br />
+        <h2 class="clearfix"><span class="title"><%= Model.caption != null ? Model.caption.text : "N/A" %></span><span class="photo_date"><%= Html.FormatReadableDate(Convert.ToDouble(Model.created_time).ConvertFromUnixTimestamp()) %></span></h2>
+        <% if(Model.location != null || !string.IsNullOrEmpty(Model.filter)) { %>
+            <span class="photo_data"><% if (Model.location != null && !string.IsNullOrEmpty(Model.location.name)) { %> taken at <strong><%= Model.location.name  %></strong> <% } %><% if( !string.IsNullOrEmpty(Model.filter)) { %>filtered with <strong><%= Model.filter %><% } %></strong><br /></span>
+        <% } %>
 
-        comments: <%= Model.comments.count %><br />
-        likes: <%= Html.DelimetedListOfUsers(Model.likes.data) %>
+        <% if(Model.likes.count != "0") { %>
+            <div class="likes_container clearfix">
+            <div class="label">likes: </div>
+            <div class="likes"><span class="user"><%= Html.DelimetedListOfUsers(Model.likes.data) %></span></div>
+            </div>
+        <% } %>
+        <% if (Model.comments.count != "0") { %>
+        <div class="comment_container">
+            <div class="label">comments:</div>
+            
+            <div class="comments">
+                <% foreach (var item in Model.comments.data) { %>
+                    <div class="comment"><span class="user"><%= item.from.username %></span>: <%= item.text %></div>
+                <% } %>
+            </div>
+        </div>
+        <% } %>
+
         
 
     </div>

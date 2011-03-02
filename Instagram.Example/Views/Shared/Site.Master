@@ -39,12 +39,14 @@
         </div>
     <% } else { %>
         <div id="left">
+            
             <% Html.RenderPartial("UserBadge", ViewData["UserData"]); %>
             <% Html.RenderPartial("RecentMedia", ViewData["RecentMedia"]); %>
             <% Html.RenderPartial("Following", ViewData["Following"]); %>
             <% Html.RenderPartial("FollowedBy", ViewData["FollowedBy"]); %>    
         </div>
         <div id="center">
+        
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
         </div>
     <% } %>

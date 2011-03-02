@@ -66,6 +66,7 @@
     </Compile>
     <Compile Include="Helpers\CookieHelper.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
+    <Compile Include="Models\LeftNavItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -165,12 +166,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\Photos\Popular.aspx" />
     <Content Include="Views\Photos\Details.aspx" />
+    <Content Include="Views\Shared\SubNav.ascx" />
     <Content Include="Views\Shared\PhotoDetails.ascx" />
     <Content Include="Views\Shared\Popup.Master" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />

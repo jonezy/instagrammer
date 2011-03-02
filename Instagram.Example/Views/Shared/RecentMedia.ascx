@@ -5,7 +5,7 @@
         foreach (var item in Model) { 
 %>
     <div class="feed_entry class="clearfix">
-        <a rel="prettyPhoto[recentMediaGallery]" href="<%= Url.Action("Details", "Photos", new { id = item.id, iframe="true", width="500", height="499" }) %>">
+        <a rel="prettyPhoto[recentMediaGallery]" href="<%= Url.Action("Details", "Photos", new { id = item.id, iframe="true", width="740", height="350" }) %>">
         <img src="<%= item.images.thumbnail.url %>" width="<%= Convert.ToInt32(item.images.thumbnail.width) / 2 %>" height="<%= Convert.ToInt32(item.images.thumbnail.height) / 2 %>" alt="<%= item.id %>" title="<%= item.id %>" /></a>
     </div>  
 <%      

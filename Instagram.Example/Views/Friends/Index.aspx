@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>You are following</h2>
+    <h2>You are following<% Html.RenderPartial("SubNav", ViewData["SubNavItems"]); %></h2>
     <% Html.RenderPartial("FriendRecords", ViewData["Follows"]); %>
 
 </asp:Content>

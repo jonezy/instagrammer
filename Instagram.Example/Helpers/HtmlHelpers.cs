@@ -32,9 +32,9 @@ public static class HtmlHelpers {
 
         StringBuilder sb = new StringBuilder();
         foreach (InstagramUser user in users) {
-            sb.AppendFormat("{0},", user.username);
+            sb.AppendFormat("{0}, ", user.username);
         }
 
-        return sb.ToString().Remove(sb.Length - 1);
+        return sb.ToString().Remove(sb.Length - 2);
     }
 }

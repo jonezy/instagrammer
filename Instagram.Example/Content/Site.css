@@ -15,7 +15,7 @@ p {margin: 1em 0 1em 0;}
 
 a {text-decoration:none;}
 a.auth {background:pink;padding:10px;color:#444;border:solid 1px;}
-
+span.user {color:#E15119;;font-weight:bold;}
 body {
   background:#fff;
   font-family: sans-serif;
@@ -26,7 +26,7 @@ div#authenticate {padding:10px;margin-bottom:10px;}
 
 header, section, footer {width:1000px; margin:0 auto 0 auto;text-align:left;}
 section, footer {padding:10px 0 10px 0;}
-section#popup {width:500px;}
+section#popup {width:100%;}
 
 header {background:#eee;}
   header a#logo {float:left;padding:5px;color:#444;padding:20px 0 20px 10px;font-size:2em;font-family:'Droid sans';font-weight:bold;}
@@ -46,6 +46,9 @@ footer {background:#eee;height:80px;}
 #left {float:left; width:255px;margin:0px 30px 0 0;}
 #center {float:right; width:715px;}
 
+.subnav {float:right;font-size:70%;color:#111;margin-top:-1px;padding:5px;background:#fff;}
+.subnav a {text-decoration:underline;}
+
 .user_badge {width:inherit;border-bottom:solid 2px #444;border-top:solid 2px #444;padding:10px 0 10px 5px;background:#eee;}
     .user_badge h2 {text-shadow: 0px 0px 5px #aaa;filter: dropshadow(color=#aaa, offx=0, offy=0);color:#444;background:none;padding:0px;margin:0px;}
     .user_badge img {float:left;width:37px;height:38px;margin-right:10px;}
@@ -61,6 +64,10 @@ footer {background:#eee;height:80px;}
 .user_feed {float:left;}
     .user_feed .feed_entry {float:left;margin:10px 23px 10px 5px;width:150px;white-space:nowrap;}
     .user_feed .feed_entry_header .meta {float:right; font-size:80%;margin-top:2px;}
+    .user_feed .feed_entry_header .meta .likes,
+    .user_feed .feed_entry_header .meta .comments {padding:0px 0px 1px 19px;float:left;}
+    .user_feed .feed_entry_header .meta .likes {background:url(images/icons/heart.png) no-repeat;margin-right:5px;}
+    .user_feed .feed_entry_header .meta .comments {background:url(images/icons/comments.png) no-repeat;}
 
 .recent_media {width:inherit; margin-top:10px; }
     .recent_media h3 { background:#444;color:#fff;padding:3px 0 3px 5px;margin-bottom:5px;}
@@ -75,7 +82,23 @@ footer {background:#eee;height:80px;}
     
 .user_photos {}
     .user_photo { clear:both; margin-bottom:20px; }
-    .user_photo .meta h3 span {float:right;font-weight:normal;font-size:80%;font-family:sans-serif;}
+    .user_photo .meta {float:left;width:396px;}
+    .user_photo .meta h2 {background:none;padding:0px 0px 2px 0px;border-bottom:1px solid #444;margin:0px;}
+    .user_photo .meta h2 span.title {float:left;width:330px;}
+    .user_photo .meta h2 span.photo_date {float:right;font-weight:normal;font-size:60%;font-family:sans-serif;background:pink;padding:3px;}
+    .user_photo .meta .photo_data {background:#ddd;display:block;padding:2px;}
+    
+    .comment_container,
+    .likes_container {margin-top:10px;}
+    
+    .comment_container .label,
+    .likes_container .label {width:70px;background:#ddd;padding:5px;float:left;margin-right:10px;}
+    
+    .comment_container .comments,
+    .likes_container .likes {float:left;width:75%;background:#eee;padding:2px;}
+    .likes_container .likes {}
+    
+    .comment_container .comments .comment {border-bottom:solid 1px #ddd;padding:2px ;}
     .user_photo img { float:left; margin-right:10px; }
     
 .pager.top {border-bottom:2px solid #444;}

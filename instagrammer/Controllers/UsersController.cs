@@ -5,7 +5,7 @@ namespace instagrammer {
         public UsersController(string token) : base(token) { }
 
         /// <summary>
-        /// Get basic information about the user
+        /// Get basic information about the currently authenticated user
         /// http://instagram.com/developer/endpoints/users/#get_users
         /// </summary>
         /// <param name="userId">the id of the user to get information for (self if null)</param>
@@ -77,7 +77,7 @@ namespace instagrammer {
         }
 
         /// <summary>
-        /// Get a list of users this user is followed by
+        /// Get a list of users the currently authenticated user is followed by
         /// http://instagram.com/developer/endpoints/relationships/#get_users_followed_by   
         /// </summary>
         /// <param name="userId">The id of the user (self if null)</param>
@@ -103,7 +103,7 @@ namespace instagrammer {
         }
 
         /// <summary>
-        /// Get information about the current users relationship with another user
+        /// Get information about the currently authenticated users relationship with another user
         /// http://instagram.com/developer/endpoints/relationships/#get_relationship  
         /// </summary>
         /// <param name="foreignUserId">The id of the user to get the current users relationship status with</param>
