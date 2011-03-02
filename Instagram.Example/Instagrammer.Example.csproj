@@ -167,11 +167,21 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\icons\accept.png" />
+    <Content Include="Content\images\icons\add.png" />
+    <Content Include="Content\images\icons\clock.png" />
+    <Content Include="Content\images\icons\comments.png" />
+    <Content Include="Content\images\icons\delete.png" />
+    <Content Include="Content\images\icons\exclamation.png" />
+    <Content Include="Content\images\icons\heart.png" />
     <Content Include="Views\Photos\Popular.aspx" />
     <Content Include="Views\Photos\Details.aspx" />
     <Content Include="Views\Shared\SubNav.ascx" />
     <Content Include="Views\Shared\PhotoDetails.ascx" />
     <Content Include="Views\Shared\Popup.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\images\icons\Thumbs.db" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
