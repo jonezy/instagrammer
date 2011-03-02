@@ -16,8 +16,8 @@ namespace Instagrammer.Example.Controllers
             AuthenticationController controller = new AuthenticationController();
             OAuthToken oauthToken = null;
             try {
-                oauthToken = controller.Request(code, Server.UrlEncode(ConfigurationManager.AppSettings["CallBackUrl"].ToString()));
-            } catch {  }
+                oauthToken = controller.Request(code, Server.UrlEncode(EnvironmentHelpers.GetConfigValue("CallBackUrl")),EnvironmentHelpers.GetConfigValue("ClientId"),EnvironmentHelpers.GetConfigValue("ClientSecret"));
+            } catch (Exception ex) {  }
 
             if (oauthToken != null) {
                 // set a cookie with the users access token?

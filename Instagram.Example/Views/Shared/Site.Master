@@ -27,7 +27,12 @@
   </nav>
 </header>
 <section class="clearfix">
-    <% string queryString = string.Format("?client_id={0}&redirect_uri={1}&response_type=code", ConfigurationManager.AppSettings["ClientSecret"], Server.UrlEncode(ConfigurationManager.AppSettings["CallBackUrl"].ToString())); %>
+    <% 
+        string queryStringFormat = "?client_id={0}&redirect_uri={1}&response_type=code";
+        string clientId = EnvironmentHelpers.GetConfigValue("ClientId");
+        string callBackUrl = Server.UrlEncode(EnvironmentHelpers.GetConfigValue("CallBackUrl"));
+        string queryString = string.Format("?client_id={0}&redirect_uri={1}&response_type=code", clientId, callBackUrl);
+     %>
     
     <% if (ViewData["UserToken"] == null) { %>
         <div id="authenticate">
