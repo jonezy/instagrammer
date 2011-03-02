@@ -16,6 +16,16 @@ p {margin: 1em 0 1em 0;}
 a {text-decoration:none;}
 a.auth {background:pink;padding:10px;color:#444;border:solid 1px;}
 span.user {color:#E15119;;font-weight:bold;}
+
+div.likes,
+div.comments,
+div.clock {padding:0px 0px 1px 19px;float:left;}
+
+div.clock {background:url(images/icons/clock.png) no-repeat;margin-right:5px;}
+div.likes {background:url(images/icons/heart.png) no-repeat;margin-right:5px;}
+div.comments {background:url(images/icons/comments.png) no-repeat;}
+
+
 body {
   background:#fff;
   font-family: sans-serif;
@@ -58,16 +68,12 @@ footer {background:#eee;height:80px;}
     .user_badge .meta .left {float:left;width:50%;}
     .user_badge .meta .right {float:right;width:50%;}
   
-.feed_entry_caption {background:#ddd;padding:4px;font-size:11px;clear:both;margin:0px;min-height:14px;overflow: hidden;text-overflow: ellipsis !important;}
+.feed_entry_caption {background:#ddd;padding:4px;font-size:11px;clear:both;margin:0px;min-height:14px;overflow: hidden;text-overflow: ellipsis !important;white-space:nowrap;}
 .feed_entry_header {background:#444;color:#fff;padding:4px;font-size:12px;min-height:16px;margin-bottom:1px;}
     
 .user_feed {float:left;}
     .user_feed .feed_entry {float:left;margin:10px 23px 10px 5px;width:150px;white-space:nowrap;}
     .user_feed .feed_entry_header .meta {float:right; font-size:80%;margin-top:2px;}
-    .user_feed .feed_entry_header .meta .likes,
-    .user_feed .feed_entry_header .meta .comments {padding:0px 0px 1px 19px;float:left;}
-    .user_feed .feed_entry_header .meta .likes {background:url(images/icons/heart.png) no-repeat;margin-right:5px;}
-    .user_feed .feed_entry_header .meta .comments {background:url(images/icons/comments.png) no-repeat;}
 
 .recent_media {width:inherit; margin-top:10px; }
     .recent_media h3 { background:#444;color:#fff;padding:3px 0 3px 5px;margin-bottom:5px;}
@@ -86,7 +92,7 @@ footer {background:#eee;height:80px;}
     .user_photo .meta h2 {background:none;padding:0px 0px 2px 0px;border-bottom:1px solid #444;margin:0px;}
     .user_photo .meta h2 span.title {float:left;width:330px;}
     .user_photo .meta h2 span.photo_date {float:right;font-weight:normal;font-size:60%;font-family:sans-serif;background:pink;padding:3px;}
-    .user_photo .meta .photo_data {background:#ddd;display:block;padding:2px;}
+    .user_photo .meta .photo_data {font-size:90%;background:#eee;display:block;padding:2px;border-bottom:2px solid #999;}
     
     .comment_container,
     .likes_container {margin-top:10px;}
@@ -95,7 +101,7 @@ footer {background:#eee;height:80px;}
     .likes_container .label {width:70px;background:#ddd;padding:5px;float:left;margin-right:10px;}
     
     .comment_container .comments,
-    .likes_container .likes {float:left;width:75%;background:#eee;padding:2px;}
+    .likes_container .likes {float:left;width:75%;background:#eee;padding:2px;border-bottom:2px solid #999;}
     .likes_container .likes {}
     
     .comment_container .comments .comment {border-bottom:solid 1px #ddd;padding:2px ;}

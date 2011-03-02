@@ -7,3 +7,7 @@ h1. TODO
   * start with paging
   * then move to search methods
 * some kind of tests (against the live api (functional) against stored json data (unit))
+
+h2. ui ideas
+
+* hipstervision.org 
