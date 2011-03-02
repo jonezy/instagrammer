@@ -27,7 +27,7 @@
   </nav>
 </header>
 <section class="clearfix">
-    <% string queryString = string.Format("?client_id={0}&redirect_uri={1}&response_type=code", "bfbdf77fbe934ffc8fbc710f6d15f75e", Server.UrlEncode("http://localhost/InstagramWrapper/OAuth/AccessRequest/")); %>
+    <% string queryString = string.Format("?client_id={0}&redirect_uri={1}&response_type=code", ConfigurationManager.AppSettings["ClientSecret"], Server.UrlEncode(ConfigurationManager.AppSettings["CallBackUrl"].ToString())); %>
     
     <% if (ViewData["UserToken"] == null) { %>
         <div id="authenticate">

@@ -2,6 +2,7 @@
 using System.Web;
 using System.Web.Mvc;
 using instagrammer;
+using System.Configuration;
 
 namespace Instagrammer.Example.Controllers
 {
@@ -15,7 +16,7 @@ namespace Instagrammer.Example.Controllers
             AuthenticationController controller = new AuthenticationController();
             OAuthToken oauthToken = null;
             try {
-                oauthToken = controller.Request(code, Server.UrlEncode("http://localhost/InstagramWrapper/OAuth/AccessRequest/"));
+                oauthToken = controller.Request(code, Server.UrlEncode(ConfigurationManager.AppSettings["CallBackUrl"].ToString()));
             } catch {  }
 
             if (oauthToken != null) {
