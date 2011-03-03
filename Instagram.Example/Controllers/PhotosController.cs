@@ -32,7 +32,7 @@ namespace Instagrammer.Example.Controllers {
             try {
                 
                 MediaController mediaController = new MediaController(base.userToken.access_token);
-                ApiResponse<FeedItem> popular = mediaController.Popular();
+                ApiResponse<FeedItem> popular = mediaController.Popular(EnvironmentHelpers.GetConfigValue("ClientId"));
 
                 ViewData["Photos"] = popular.data;
             } catch { }

@@ -55,6 +55,7 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\LikesController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\FriendsController.cs" />
@@ -174,6 +175,7 @@
     <Content Include="Content\images\icons\delete.png" />
     <Content Include="Content\images\icons\exclamation.png" />
     <Content Include="Content\images\icons\heart.png" />
+    <Content Include="Views\Likes\Index.aspx" />
     <Content Include="Views\Photos\Popular.aspx" />
     <Content Include="Views\Photos\Details.aspx" />
     <Content Include="Views\Shared\SubNav.ascx" />

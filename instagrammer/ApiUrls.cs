@@ -16,7 +16,7 @@
         // media
         public static string MEDIA_URL = API_BASE + "/media/{0}?access_token={1}";
         public static string MEDIA_SEARCH_URL = API_BASE + "/media/search?access_token={0}";
-        public static string MEDIA_POPULAR_URL = API_BASE + "/media/popular?access_token={0}";
+        public static string MEDIA_POPULAR_URL = API_BASE + "/media/popular?client_id={0}";
         public static string COMMENTS_URL = API_BASE + "/media/{0}/comments?access_token={1}";
         public static string COMMENTS_ADD_URL = API_BASE + "/media/{0}/comments?access_token={1}";
         public static string COMMENTS_DELETE_URL = API_BASE + "/media/{0}/comments?{1}&access_token={2}";

@@ -47,8 +47,8 @@ namespace instagrammer {
         /// http://instagram.com/developer/endpoints/media/#get_media_popular
         /// </summary>
         /// <returns>An ApiResponse<FeedItem> item object with a list of feeditems on data node.</returns>
-        public ApiResponse<FeedItem> Popular() {
-            string json = GetJSON(string.Format(ApiUrls.MEDIA_POPULAR_URL, base._token), null);
+        public ApiResponse<FeedItem> Popular(string clientId) {
+            string json = GetJSON(string.Format(ApiUrls.MEDIA_POPULAR_URL, clientId), null);
             ApiResponse<FeedItem> response = json.Deserialize<ApiResponse<FeedItem>>();
 
             return response;
@@ -115,7 +115,7 @@ namespace instagrammer {
         /// <param name="mediaId">The id of the media to like</param>
         /// <returns>ApiSingleResponse<string> containing a meta node (with http status) and a null data node</returns>
         public ApiSingleResponse<string> Like(string mediaId) {
-            string json = GetJSON(string.Format(ApiUrls.LIKES_URL, mediaId, base._token), null, "POST");
+            string json = GetJSON(string.Format(ApiUrls.LIKES_URL, mediaId, base._token), mediaId, "POST");
             ApiSingleResponse<string> response = json.Deserialize<ApiSingleResponse<string>>();
 
             return response;

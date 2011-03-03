@@ -31,30 +31,36 @@
         string queryStringFormat = "?client_id={0}&redirect_uri={1}&response_type=code";
         string clientId = EnvironmentHelpers.GetConfigValue("ClientId");
         string callBackUrl = Server.UrlEncode(EnvironmentHelpers.GetConfigValue("CallBackUrl"));
-        string queryString = string.Format("?client_id={0}&redirect_uri={1}&response_type=code", clientId, callBackUrl);
+        string queryString = string.Format("?client_id={0}&redirect_uri={1}&response_type=code&scope=likes+comments+relationships", clientId, callBackUrl);
      %>
     
+
+        <div id="left">
     <% if (ViewData["UserToken"] == null) { %>
         <div id="authenticate">
-            <h1>Welcome to instagrammer</h1>
+            <h3>Welcome to instagrammer</h3>
             <p>To use this site, you must first grant access to allow instagram to pull your user data so that it can be shown on this site.</p>
             <p>You will be returned back to this page once you've granted this site access to your instagram account.</p>
             <br />
             <a href="https://api.instagram.com/oauth/authorize/<%= queryString %>" class="auth">Authenticate with instagram</a>
         </div>
-    <% } else { %>
-        <div id="left">
-            
+    <% } else { %>            
             <% Html.RenderPartial("UserBadge", ViewData["UserData"]); %>
             <% Html.RenderPartial("RecentMedia", ViewData["RecentMedia"]); %>
             <% Html.RenderPartial("Following", ViewData["Following"]); %>
             <% Html.RenderPartial("FollowedBy", ViewData["FollowedBy"]); %>    
-        </div>
-        <div id="center">
         
-            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
-        </div>
     <% } %>
+    </div>
+        <div id="center">
+<% if (ViewData["UserToken"] == null) { %>
+        <h2>Popular photo's on instagram, RIGHT NOW!</h2>
+        <% Html.RenderPartial("Popular", ViewData["Popular"]); %>
+        <% } else { %>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            <%} %>
+        </div>
+    
 </section>
 <footer></footer>
 
@@ -94,7 +100,34 @@
             });
             return false;
         });
+
+        $("a.like_action").click(function(e) {
+            var targetEl = $(e.target);
+            var feed_item = new Object();
+            feed_item.id = targetEl.attr('id');
+            
+            $.ajax({
+                type: "POST",
+                url: "<%= Url.Action("Create", "Likes") %>",
+                dataType: "json",
+                data: feed_item,
+                async: true,
+                cache: false,
+                success: function(data) {
+                    if(data.success == true) {
+                        targetEl.addClass("user_liked");
+                    } else {
+                        alert('There was a problem liking the photo');
+                    }
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    alert(textStatus + errorThrown);
+                }
+            });
+            return false;
+        });
     });
 </script>
+
 </body>
 </html>

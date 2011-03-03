@@ -17,6 +17,7 @@ a {text-decoration:none;}
 a.auth {background:pink;padding:10px;color:#444;border:solid 1px;}
 span.user {color:#E15119;;font-weight:bold;}
 
+.user_liked {font-weight:bold;text-decoration:underline;}
 div.likes,
 div.comments,
 div.clock {padding:1px 0px 0px 19px;height:16px;float:left;}
@@ -68,7 +69,7 @@ footer {background:#eee;height:80px;}
     .user_badge .meta .left {float:left;width:50%;}
     .user_badge .meta .right {float:right;width:50%;}
   
-.feed_entry_caption {padding:4px;font-size:12px;min-height:16px;margin-bottom:1px;}
+.feed_entry_caption {padding:4px;font-size:11px;min-height:16px;margin-bottom:1px;}
 .feed_entry_header {font-size:11px;clear:both;margin:0px;min-height:14px;overflow:hidden;text-overflow: ellipsis !important;white-space:nowrap;margin-bottom:1px;}
     
 .user_feed {float:left;}
