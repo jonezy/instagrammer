@@ -15,7 +15,7 @@
 
             <div class="feed_entry_caption">
                 <div class="clock"><%= Html.FormatReadableDate(Convert.ToDouble(item.created_time).ConvertFromUnixTimestamp()) %></div>
-                <!-- <a href="#" class="like_action ">--><div id="<%= item.id %>" class="likes <%= bool.Parse(item.user_has_liked) ? "user_liked" : "" %>">
+                <!-- <a href="#" class="like_action ">--><div id="<%= item.id %>" class="likes <%= item.user_has_liked == "1" ? "user_liked" : "" %>">
                 <% if (item.likes.count == "true") { %>
                     1
                 <% } else { %>
