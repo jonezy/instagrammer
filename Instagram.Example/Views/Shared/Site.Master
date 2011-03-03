@@ -16,15 +16,17 @@
 
 <header class="clearfix">
   <%= Html.ActionLink("instagrammer", "Index", "Home", null, new { id = "logo" }) %>
+  <% if (ViewData["UserToken"] != null) { %>
   <nav>
     <ul>
-      <li><%= Html.ActionLink("Home", "Index", "Home") %></li>
+      <li><%= Html.ActionLink("Home", "Index", "Home")%></li>
       <li><%= Html.ActionLink("Friends", "Index", "Friends")%></li>
       <li><%= Html.ActionLink("Photos", "Index", "Photos")%></li>
       <li><%= Html.ActionLink("About", "About", "Home")%></li>
       <li><%= Html.ActionLink("Log Out", "Logout", "Security")%></li>
     </ul>
   </nav>
+  <% } %>
 </header>
 <section class="clearfix">
     <% 
