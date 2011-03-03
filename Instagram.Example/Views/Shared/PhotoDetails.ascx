@@ -23,6 +23,13 @@
                 <% foreach (var item in Model.comments.data) { %>
                     <div class="photo_comment"><span class="user"><%= item.from.username %></span>: <%= item.text %></div>
                 <% } %>
+                
+                <div class="comment_input_container">
+                    <% Html.BeginForm(); %>
+                        <%= Html.TextArea( "name", null, new { @class = "comment_input" } ) %>
+                        <input type="submit" value="add comment" id="btnSubmit" />
+                    <% Html.EndForm(); %>
+                </div>
             </div>
         </div>
         <% } %>

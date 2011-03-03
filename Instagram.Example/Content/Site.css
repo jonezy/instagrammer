@@ -115,6 +115,10 @@ footer {background:#eee;height:80px;}
 .pager a.back {float:left;margin-right:10px;}
     .pager a {padding:5px;background:#444;color:#fff;display:block;float:right;}
     
+    
+.comment_input_container {padding-top:5px;border-top:solid 2px #444;text-align:right;}
+.comment_input {width:100%;height:30px;border:solid 1px #444;}
+.
 /*
  * media queries for responsive design
  * these follow after primary styles so they will successfully override.

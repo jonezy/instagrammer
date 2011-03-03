@@ -10,7 +10,7 @@
                 <span class="user"><%= item.user.username%></span><br /> <% if (item.caption != null && !string.IsNullOrEmpty(item.caption.text)) %> <%= item.caption.text%><span class="meta"></span>
             </div>
 
-            <a rel="prettyPhoto[recentMediaGallery]" href="<%= Url.Action("Details", "Photos", new { id = item.id, iframe="true", width="740", height="350" }) %>">
+            <a rel="prettyPhoto[recentMediaGallery<%= item.id %>]" href="<%= Url.Action("Details", "Photos", new { id = item.id, iframe="true", width="740", height="350" }) %>">
                 <img src="<%= item.images.thumbnail.url %>" width="<%= item.images.thumbnail.width %>" height="<%= item.images.thumbnail.height %>" alt="taken by: <%= item.user.username %>" title="taken by: <%= item.user.username %>" /></a>
 
             <div class="feed_entry_caption">
