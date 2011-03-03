@@ -1,6 +1,8 @@
 h1. TODO
 
 * add support for passing in scope to authentication client
+* add the ability to comment on photo's in detail mode
+* 
 * finish POST and DELETE based client calls (add comment/tag etc)
 * rename controllers to clients?
 * implement the realtime api

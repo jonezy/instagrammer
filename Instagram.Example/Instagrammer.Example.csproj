@@ -185,7 +185,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AppSettings.config" />
-    <None Include="Content\images\icons\Thumbs.db" />
+    <Content Include="Content\images\icons\clock_orig.png" />
+    <Content Include="Content\images\icons\comment.png" />
+    <Content Include="Content\images\icons\heart_orig.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
