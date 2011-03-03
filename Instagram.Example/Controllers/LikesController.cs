@@ -30,7 +30,7 @@ namespace Instagrammer.Example.Controllers
 
         //
         // GET: /Likes/Create
-        //[HttpPost]
+        [HttpPost]
         public JsonResult Create(FeedItem feedItem)
         {
             MediaController controller = new MediaController(base.userToken.access_token);
