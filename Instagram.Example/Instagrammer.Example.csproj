@@ -178,11 +178,13 @@
     <Content Include="Views\Likes\Index.aspx" />
     <Content Include="Views\Photos\Popular.aspx" />
     <Content Include="Views\Photos\Details.aspx" />
+    <Content Include="Views\Shared\Popular.ascx" />
     <Content Include="Views\Shared\SubNav.ascx" />
     <Content Include="Views\Shared\PhotoDetails.ascx" />
     <Content Include="Views\Shared\Popup.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AppSettings.config" />
     <None Include="Content\images\icons\Thumbs.db" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
