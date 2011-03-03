@@ -53,7 +53,7 @@ namespace Instagrammer.Example.Controllers
         //
         // POST: /Likes/Edit/5
 
-        [HttpPost]
+        //[HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
             try
@@ -79,7 +79,7 @@ namespace Instagrammer.Example.Controllers
         //
         // POST: /Likes/Delete/5
 
-        [HttpPost]
+        //[HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try
