@@ -25,11 +25,11 @@ namespace Instagrammer.Example.Controllers {
                         ViewData["RecentMedia"] = recentMedia.data.Take(6).ToList();
                         ViewData["Following"] = client.Follows(null).data.Take(12).ToList();
                         ViewData["FollowedBy"] = client.FollowedBy(null).data.Take(12).ToList();
-                    } else {
-                        MediaClient mediaClient = new MediaClient("");
-                        ViewData["Popular"] = mediaClient.Popular(EnvironmentHelpers.GetConfigValue("ClientId")).data;
-                        ViewData["Authenticated"] = "false";
                     }
+                } else {
+                    MediaClient mediaClient = new MediaClient("");
+                    ViewData["Popular"] = mediaClient.Popular(EnvironmentHelpers.GetConfigValue("ClientId")).data;
+                    ViewData["Authenticated"] = "false";
                 }
             } catch { }
 
