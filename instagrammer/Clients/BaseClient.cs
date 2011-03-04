@@ -5,10 +5,10 @@ using System.Text;
 
 namespace instagrammer {
     [DataContract]
-    public abstract class ControllerBase {
+    public abstract class BaseClient {
         protected string _token;
 
-        public ControllerBase(string token) {
+        public BaseClient(string token) {
              _token = token;
         }
 

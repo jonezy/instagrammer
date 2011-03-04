@@ -1,7 +1,7 @@
 ﻿
 namespace instagrammer {
-    public class MediaController : ControllerBase {
-        public MediaController(string token) : base(token) { }
+    public class MediaClient : BaseClient {
+        public MediaClient(string token) : base(token) { }
 
         /// <summary>
         /// Get the details (full record) of the specified media

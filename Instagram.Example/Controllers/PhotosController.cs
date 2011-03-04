@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace Instagrammer.Example.Controllers {
     public class PhotosController : BaseController {
-        UsersController controller;
+        UsersClient client;
         public PhotosController() : base() {
-            controller = new UsersController(base.userToken.access_token);
+            client = new UsersClient(base.userToken.access_token);
 
             List<SubNavItem> subNavItems = new List<SubNavItem>();
             subNavItems.Add(new SubNavItem { LinkText = "Your feed", ActionName = "Index", ControllerName = "Home" });
@@ -20,7 +20,7 @@ namespace Instagrammer.Example.Controllers {
         // GET: /Photos/
         public ActionResult Index() {
             try {
-                ApiResponse<FeedItem> media = controller.RecentMedia(null, null, null);
+                ApiResponse<FeedItem> media = client.RecentMedia(null, null, null);
 
                 ViewData["PreviousPage"] = "";
                 ViewData["Photos"] = media;
@@ -31,8 +31,8 @@ namespace Instagrammer.Example.Controllers {
         public ActionResult Popular() {
             try {
                 
-                MediaController mediaController = new MediaController(base.userToken.access_token);
-                ApiResponse<FeedItem> popular = mediaController.Popular(EnvironmentHelpers.GetConfigValue("ClientId"));
+                MediaClient mediaClient = new MediaClient(base.userToken.access_token);
+                ApiResponse<FeedItem> popular = mediaClient.Popular(EnvironmentHelpers.GetConfigValue("ClientId"));
 
                 ViewData["Photos"] = popular.data;
             } catch { }
@@ -42,8 +42,8 @@ namespace Instagrammer.Example.Controllers {
 
         public ActionResult Next() {
             string next_max_id = RouteData.Values["id"] != null ? RouteData.Values["id"].ToString() : "";
-            UsersController controller = new UsersController(base.userToken.access_token);
-            ApiResponse<FeedItem> media = controller.RecentMedia(null, next_max_id, null);
+            UsersClient client = new UsersClient(base.userToken.access_token);
+            ApiResponse<FeedItem> media = client.RecentMedia(null, next_max_id, null);
             
             ViewData["PreviousPage"] = media.data[0].id;
             ViewData["Photos"] = media;
@@ -53,7 +53,7 @@ namespace Instagrammer.Example.Controllers {
 
         public ActionResult Previous() {
             string prev_max_id = RouteData.Values["id"] != null ? RouteData.Values["id"].ToString() : "";
-            ApiResponse<FeedItem> media = controller.RecentMedia(null, null, prev_max_id);
+            ApiResponse<FeedItem> media = client.RecentMedia(null, null, prev_max_id);
 
             ViewData["PreviousPage"] = media.data[0].id;
             ViewData["Photos"] = media;
@@ -66,8 +66,8 @@ namespace Instagrammer.Example.Controllers {
             RouteData.Values.TryGetValue("id", out mediaId);
             
             try {
-                MediaController mediaController = new MediaController(userToken.access_token);
-                ViewData["PhotoDetails"] = mediaController.Media(mediaId.ToString()).data;
+                MediaClient mediaClient = new MediaClient(userToken.access_token);
+                ViewData["PhotoDetails"] = mediaClient.Media(mediaId.ToString()).data;
 
             } catch (System.Net.WebException ex) {
                 ViewData["Error"] = ex.Message;

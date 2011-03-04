@@ -1,7 +1,7 @@
 ﻿
 namespace instagrammer {
-    public class TagsController : ControllerBase {
-        public TagsController(string token) : base(token) { }
+    public class TagsClient : BaseClient {
+        public TagsClient(string token) : base(token) { }
 
         /// <summary>
         /// Get information about a tag

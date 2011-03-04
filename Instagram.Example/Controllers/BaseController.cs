@@ -14,24 +14,24 @@ namespace Instagrammer.Example.Controllers {
         }
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext) {
-            
-                try {
-                    if (userToken != null) {
-                    UsersController controller = new UsersController(userToken.access_token);
-                    ApiResponse<FeedItem> recentMedia = controller.RecentMedia(null, null, null);
+            try {
+                if (userToken != null) {
+                    UsersClient client = new UsersClient(userToken.access_token);
+                    ApiResponse<FeedItem> recentMedia = client.RecentMedia(null, null, null);
 
-                    ViewData["UserData"] = controller.User(null).data;
-                    if (recentMedia != null)
+                    ViewData["UserData"] = client.User(null).data;
+
+                    if (recentMedia != null) {
                         ViewData["RecentMedia"] = recentMedia.data.Take(6).ToList();
-                    ViewData["Following"] = controller.Follows(null).data.Take(12).ToList();
-                    ViewData["FollowedBy"] = controller.FollowedBy(null).data.Take(12).ToList();
+                        ViewData["Following"] = client.Follows(null).data.Take(12).ToList();
+                        ViewData["FollowedBy"] = client.FollowedBy(null).data.Take(12).ToList();
                     } else {
-                        MediaController mediaController = new MediaController("");
-                        ViewData["Popular"] = mediaController.Popular(EnvironmentHelpers.GetConfigValue("ClientId")).data;
+                        MediaClient mediaClient = new MediaClient("");
+                        ViewData["Popular"] = mediaClient.Popular(EnvironmentHelpers.GetConfigValue("ClientId")).data;
                         ViewData["Authenticated"] = "false";
                     }
-                } catch { }
-
+                }
+            } catch { }
 
             base.OnActionExecuting(filterContext);
         }

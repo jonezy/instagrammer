@@ -13,10 +13,10 @@ namespace Instagrammer.Example.Controllers
         public ActionResult AccessRequest() {
 
             string code = TryParse(Request.QueryString["CODE"].ToString());
-            AuthenticationController controller = new AuthenticationController();
+            AuthenticationClient client = new AuthenticationClient();
             OAuthToken oauthToken = null;
             try {
-                oauthToken = controller.Request(code, Server.UrlEncode(EnvironmentHelpers.GetConfigValue("CallBackUrl")),EnvironmentHelpers.GetConfigValue("ClientId"),EnvironmentHelpers.GetConfigValue("ClientSecret"));
+                oauthToken = client.Request(code, Server.UrlEncode(EnvironmentHelpers.GetConfigValue("CallBackUrl")), EnvironmentHelpers.GetConfigValue("ClientId"), EnvironmentHelpers.GetConfigValue("ClientSecret"));
             } catch (Exception ex) {  }
 
             if (oauthToken != null) {

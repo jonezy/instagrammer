@@ -1,7 +1,7 @@
 ﻿
 namespace instagrammer {
-    public class LocationController : ControllerBase {
-        public LocationController(string token) : base(token) { }
+    public class LocationClient : BaseClient {
+        public LocationClient(string token) : base(token) { }
 
         /// <summary>
         /// Get information about a location

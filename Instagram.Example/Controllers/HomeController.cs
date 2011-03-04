@@ -1,6 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using instagrammer;
-using System.Collections.Generic;
 
 namespace Instagrammer.Example.Controllers {
     [HandleError]
@@ -17,10 +17,10 @@ namespace Instagrammer.Example.Controllers {
 
         public ActionResult Index() {
             if (base.userToken != null) {
-                UsersController controller = new UsersController(userToken.access_token);
+                UsersClient client = new UsersClient(userToken.access_token);
                 try {
-                    ViewData["UserFeed"] = controller.SelfFeed().data;
-                    return View(controller.User(null).data);
+                    ViewData["UserFeed"] = client.SelfFeed().data;
+                    return View(client.User(null).data);
                 } catch { }
             }
             return View ();

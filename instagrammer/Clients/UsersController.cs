@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
 namespace instagrammer {
-    public class UsersController : ControllerBase {
-        public UsersController(string token) : base(token) { }
+    public class UsersClient : BaseClient {
+        public UsersClient(string token) : base(token) { }
 
         /// <summary>
         /// Get basic information about the currently authenticated user

@@ -13,7 +13,7 @@
   <link href="http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold" rel="stylesheet" type="text/css">
 </head>    
 <body> 
-
+<div id="flash" style="display:none"></div>
 <header class="clearfix">
   <%= Html.ActionLink("instagrammer", "Index", "Home", null, new { id = "logo" }) %>
   <% if (ViewData["UserToken"] != null) { %>
@@ -35,31 +35,29 @@
         string callBackUrl = Server.UrlEncode(EnvironmentHelpers.GetConfigValue("CallBackUrl"));
         string queryString = string.Format("?client_id={0}&redirect_uri={1}&response_type=code&scope=likes+comments+relationships", clientId, callBackUrl);
      %>
-    
-
-        <div id="left">
-    <% if (ViewData["UserToken"] == null) { %>
-        <div id="authenticate">
-            <h3>Welcome to instagrammer</h3>
-            <p>To use this site, you must first grant access to allow instagram to pull your user data so that it can be shown on this site.</p>
-            <p>You will be returned back to this page once you've granted this site access to your instagram account.</p>
-            <br />
-            <a href="https://api.instagram.com/oauth/authorize/<%= queryString %>" class="auth">Authenticate with instagram</a>
-        </div>
-    <% } else { %>            
+    <div id="left">
+        <% if (ViewData["UserToken"] == null) { %>
+            <div id="authenticate">
+                <h3>Welcome to instagrammer</h3>
+                <p>To use this site, you must first grant access to allow instagram to pull your user data so that it can be shown on this site.</p>
+                <p>You will be returned back to this page once you've granted this site access to your instagram account.</p>
+                <br />
+                <a href="https://api.instagram.com/oauth/authorize/<%= queryString %>" class="auth">Authenticate with instagram</a>
+            </div>
+        <% } else { %>            
             <% Html.RenderPartial("UserBadge", ViewData["UserData"]); %>
             <% Html.RenderPartial("RecentMedia", ViewData["RecentMedia"]); %>
             <% Html.RenderPartial("Following", ViewData["Following"]); %>
             <% Html.RenderPartial("FollowedBy", ViewData["FollowedBy"]); %>    
         
-    <% } %>
+        <% } %>
     </div>
         <div id="center">
-<% if (ViewData["UserToken"] == null) { %>
-        <h2>Popular photo's on instagram, RIGHT NOW!</h2>
-        <% Html.RenderPartial("Popular", ViewData["Popular"]); %>
-        <% } else { %>
-            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            <% if (ViewData["UserToken"] == null) { %>
+                <h2>Popular photo's on instagram, RIGHT NOW!</h2>
+                <% Html.RenderPartial("Popular", ViewData["Popular"]); %>
+            <% } else { %>
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
             <%} %>
         </div>
     
@@ -68,58 +66,51 @@
 
 <script src="<%= Url.Content("~/Scripts/jquery-1.4.1.min.js") %>" type="text/javascript"></script>
 <script src="<%= Url.Content("~/Scripts/jquery.prettyPhoto.js") %>" type="text/javascript"></script>
+<script src="<%= Url.Content("~/Scripts/global.js") %>" type="text/javascript"></script>
 <script type="text/javascript">
     $(document).ready(function() {
-        $(".user_feed a[rel^='prettyPhoto']").prettyPhoto({
-            animationSpeed: 'fast',
-            theme: 'light_square',
-            allow_resize: false,
-            show_title: false
-        });
-
-        $(".recent_media a[rel^='prettyPhoto']").prettyPhoto({
-            animationSpeed: 'fast',
-            theme: 'light_square',
-            allow_resize: false,
-            show_title: false
-        });
-    });
-
-    $(function() {
-        $("a.test").click(function(e) {
-            $.ajax({
-                type: "GET",
-                url: "Home/TestResult",
-                dataType: "json",
-                async: true,
-                cache: false,
-                success: function(data) {
-                    alert(data.username);
-                },
-                error: function(XMLHttpRequest, textStatus, errorThrown) {
-                    alert(textStatus);
-                }
-            });
-            return false;
-        });
-
         $("a.like_action").click(function(e) {
             var targetEl = $(e.target);
             var feed_item = new Object();
+            var postAction = "";
+            var successMessage = "You successfully unliked the photo :(";
+            var action = "like";
+            var currentValue = targetEl.text();
+            
             feed_item.id = targetEl.attr('id');
+
+            if(targetEl.hasClass('likes') && !targetEl.hasClass('user_liked')){ 
+                postAction = "<%= Url.Action("Create", "Likes") %>";
+                successMessage = "You successfully liked the photo!";
+                currentValue = parseInt(currentValue) + 1;
+            } else if(targetEl.hasClass('likes') && targetEl.hasClass('user_liked')) {
+                postAction = "<%= Url.Action("Delete", "Likes") %>";
+                successMessage = "You successfully unliked the photo :(";
+                currentValue = parseInt(currentValue) - 1;
+            } else {
+                postAction = "<%= Url.Action("Delete", "Likes") %>";
+                successMessage = "You successfully unliked the photo :(";
+                currentValue = parseInt(currentValue) - 1;
+            }
             
             $.ajax({
                 type: "POST",
-                url: "<%= Url.Action("Create", "Likes") %>",
+                url: postAction,
                 dataType: "json",
                 data: feed_item,
                 async: true,
                 cache: false,
                 success: function(data) {
                     if(data.success == true) {
-                        targetEl.addClass("user_liked");
+                        targetEl.toggleClass("user_liked");
+                        if(currentValue != null) {
+                            targetEl.text(currentValue);
+                        }
+                        FlashMessage(successMessage, "Message_Success Message_Flash");
+                       return false
                     } else {
-                        alert('There was a problem liking the photo');
+                        FlashMessage("There was a problem doing what you asked, probably best to try again ok?", "Message_Error Message_Flash");
+                        return false;
                     }
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -129,7 +120,7 @@
             return false;
         });
     });
+    
 </script>
-
 </body>
 </html>

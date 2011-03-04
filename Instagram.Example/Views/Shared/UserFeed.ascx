@@ -1,5 +1,6 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<List<instagrammer.FeedItem>>" %>
 <%@ Import Namespace="instagrammer" %>
+
 <div class="user_feed">
     <%  if(Model != null) {
             foreach (var item in Model) {
@@ -15,13 +16,10 @@
 
             <div class="feed_entry_caption">
                 <div class="clock"><%= Html.FormatReadableDate(Convert.ToDouble(item.created_time).ConvertFromUnixTimestamp()) %></div>
-                <!-- <a href="#" class="like_action ">--><div id="<%= item.id %>" class="likes <%= item.user_has_liked == "1" ? "user_liked" : "" %>">
-                <% if (item.likes.count == "true") { %>
-                    1
-                <% } else { %>
+                <a href="#" class="like_action ">
+                    <div id="<%= item.id %>" class="likes <%= item.user_has_liked == "true" || item.user_has_liked == "1" ? "user_liked" : "" %>">
                     <%= item.likes != null ? item.likes.count : "0"%>
-                <% } %>
-                </div><!--</a>-->      
+                </div></a>     
                 <div class="comments"><%= item.comments != null ? item.comments.count : "0"%></div>
             </div>
         </div>
