@@ -1,15 +1,21 @@
 h1. TODO
 
+* start flushing out the README
 * add support for passing in scope to authentication client
+* add overloads for "self" calls, don't require the api user to pass in null either something or nothing.
 * add the ability to comment on photo's in detail mode
-* finish POST and DELETE based client calls (add comment/tag etc)
-* rename controllers to clients?
 * implement the realtime api
 * ensure all api methods accept and pass additional params
   * start with paging
   * then move to search methods
+  * lat long
+
+h2. Tests
+
 * some kind of tests (against the live api (functional) against stored json data (unit))
+* unit testing against stored json data is brittle (especially since various aspects of the json are still changing and variable)
 
 h2. ui ideas
 
+* move away from the constrained site and let the header be at the top and un-attached from the content
 * hipstervision.org 
