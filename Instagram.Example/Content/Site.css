@@ -3,6 +3,7 @@
 @import url("forms.css");
 
  /* put your styles in here */
+em {font-style:italic;}
 h1 {font-size:2em;font-family:'Droid sans', Sans-Serif;}
 h2 {font-family:'Droid sans', Sans-Serif;}
 h3 {font-family:'Droid sans', Sans-Serif;}
@@ -17,7 +18,7 @@ a {text-decoration:none;}
 a.auth {background:pink;padding:10px;color:#444;border:solid 1px;}
 span.user {color:#cc6600;font-weight:bold;}
 
-.user_liked {font-weight:bold;text-decoration:underline;color:#cc6600;}
+.user_liked {font-weight:bold !important;text-decoration:underline !important;color:#cc6600;}
 div.likes,
 div.comments,
 div.clock {padding:1px 0px 0px 19px;height:16px;float:left;}
@@ -105,7 +106,7 @@ footer {background:#eee;height:80px;}
     .likes_container .photo_likes {width:342px;float:left;}
     .likes_container .photo_likes {display:block;}
     
-    .comment_container .photo_comments .photo_comment {border-bottom:solid 1px #eee;padding:2px;}
+    .comment_container .photo_comments .photo_comment {background:#eee;padding:2px;margin-bottom:2px;}
     
     .user_photo img { float:left; margin-right:10px; }
     
@@ -116,8 +117,8 @@ footer {background:#eee;height:80px;}
     .pager a {padding:5px;background:#444;color:#fff;display:block;float:right;}
     
     
-.comment_input_container {padding-top:5px;border-top:solid 2px #444;text-align:right;}
-.comment_input {width:100%;height:30px;border:solid 1px #444;}
+.comment_input_container {padding-top:5px;text-align:right;}
+.comment_input {width:336px;height:30px;border:solid 1px #444;}
 .
 /*
  * media queries for responsive design

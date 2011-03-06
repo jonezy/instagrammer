@@ -23,7 +23,7 @@ namespace Instagrammer.Example.Controllers {
                 ApiResponse<FeedItem> media = client.RecentMedia(null, null, null);
 
                 ViewData["PreviousPage"] = "";
-                ViewData["Photos"] = media;
+                ViewData["Photos"] = media.data;
             } catch { }
             return View();
         }

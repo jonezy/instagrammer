@@ -68,6 +68,8 @@
 <script src="<%= Url.Content("~/Scripts/jquery.prettyPhoto.js") %>" type="text/javascript"></script>
 <script src="<%= Url.Content("~/Scripts/global.js") %>" type="text/javascript"></script>
 <script type="text/javascript">
+
+
     $(document).ready(function() {
         $("a.like_action").click(function(e) {
             var targetEl = $(e.target);
@@ -119,6 +121,41 @@
             });
             return false;
         });
+        
+        $(".comment_submit").click(function(e) {
+            var targetEl = $(e.target);
+            var mediaId = e.target.name;
+            var commentInput = $("textarea#comment_" + mediaId);
+             
+            var photo_comment = new Object();
+            photo_comment.id = mediaId;
+            photo_comment.text = commentInput.val();
+            
+            $.ajax({
+                type: "POST",
+                url: "<%= Url.Action("Create", "Comment") %>",
+                dataType: "json",
+                data: photo_comment,
+                async: true,
+                cache: false,
+                success: function(data) {
+                    if(data.success == true) {
+                        FlashMessage("Your comment was added!", "Message_Success Message_Flash");
+                       return false
+                    } else {
+                        FlashMessage("There was a problem doing what you asked, probably best to try again ok?", "Message_Error Message_Flash");
+                        return false;
+                    }
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    FlashMessage("There was a problem doing what you asked, probably best to try again ok?", "Message_Error Message_Flash");
+                    return false;
+                }
+            });
+            return false;
+        });    
+    
+    
     });
     
 </script>

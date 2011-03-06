@@ -74,9 +74,9 @@ namespace instagrammer {
         /// <param name="mediaId">The id of the media object to add the comment to</param>
         /// <param name="text">The text of the comment</param>
         /// <returns>An ApiResponse<Comment> item object with a list of Comments the data node.</returns>
-        public ApiSingleResponse<string> Comment(string mediaId, string text) {
-            string json = GetJSON(string.Format(ApiUrls.COMMENTS_ADD_URL, mediaId, base._token), null, "POST");
-            ApiSingleResponse<string> response = json.Deserialize<ApiSingleResponse<string>>();
+        public ApiSingleResponse<Comment> Comment(string mediaId, string text) {
+            string json = GetJSON(string.Format(ApiUrls.COMMENTS_ADD_URL, mediaId, base._token, text), string.Format("text={0}",text), "POST");
+            ApiSingleResponse<Comment> response = json.Deserialize<ApiSingleResponse<Comment>>();
 
             return response;
         }
