@@ -1,5 +1,6 @@
 h1. TODO
 
+* add raw json,raw request url to response object
 * have to pick a new name :(
   * instamin
 * ditch the your photo's layout, it's too bulky and too much info at once, just piggy back userfeed
