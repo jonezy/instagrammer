@@ -140,10 +140,10 @@
                 async: true,
                 cache: false,
                 success: function(data) {
-                alert(data);
                     FlashMessage("Your comment was added!", "Message_Success Message_Flash");
-                    var loadUrl = "<%= Url.Action("Details", "Comment", new { id= 31791972})  %>";
-                    alert(loadUrl);
+        
+                    var loadUrl = "<%= Url.Action("Details", "Comment", new { id = Url.RequestContext.RouteData.Values["id"] }  )  %>";
+
                     $("#photo_details").load(loadUrl);
                     
                     return false
