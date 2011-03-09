@@ -18,6 +18,16 @@ namespace instagrammer {
         }
 
         /// <summary>
+        /// Get basic information about the currently authenticated user
+        /// http://instagram.com/developer/endpoints/users/#get_users
+        /// </summary>
+        /// <param name="userId">the id of the user to get information for (self if null)</param>
+        /// <returns>An ApiSingleReponse containing a single Instagram user record on the data node.</returns>
+        public ApiSingleResponse<InstagramUser> User() {
+            return User(null);
+        }
+
+        /// <summary>
         /// Show the currently authenticated users feed
         /// </summary>
         /// <returns>An ApiResponse containing a list of FeedItem's on the data node</returns>

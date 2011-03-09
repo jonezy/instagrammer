@@ -22,7 +22,12 @@ namespace Instagrammer.Example.Controllers {
         // GET: /Comment/Details/5
 
         public ActionResult Details(int id) {
-            return View();
+            MediaClient client = new MediaClient(base.userToken.access_token);
+            ApiSingleResponse<FeedItem> media = client.Media(id.ToString());
+
+            ViewData["PhotoDetails"] = media.data;
+
+            return PartialView("PhotoDetails", media.data);
         }
 
         //

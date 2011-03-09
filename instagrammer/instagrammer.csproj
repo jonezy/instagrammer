@@ -60,10 +60,10 @@
     <Compile Include="Clients\BaseClient.cs" />
     <Compile Include="Clients\AuthenticationClient.cs" />
     <Compile Include="Clients\LocationClient.cs" />
-    <Compile Include="Clients\TagsController.cs" />
+    <Compile Include="Clients\TagsClient.cs" />
     <Compile Include="Clients\Extensions.cs" />
     <Compile Include="Clients\MediaClient.cs" />
-    <Compile Include="Clients\UsersController.cs" />
+    <Compile Include="Clients\UsersClient.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Models\Comments.cs" />
     <Compile Include="Models\FeedItem.cs" />

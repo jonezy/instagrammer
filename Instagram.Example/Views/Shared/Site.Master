@@ -126,7 +126,8 @@
             var targetEl = $(e.target);
             var mediaId = e.target.name;
             var commentInput = $("textarea#comment_" + mediaId);
-             
+            var photoContainer = $('.photo_comments');
+
             var photo_comment = new Object();
             photo_comment.id = mediaId;
             photo_comment.text = commentInput.val();
@@ -139,16 +140,16 @@
                 async: true,
                 cache: false,
                 success: function(data) {
-                    if(data.success == true) {
-                        FlashMessage("Your comment was added!", "Message_Success Message_Flash");
-                       return false
-                    } else {
-                        FlashMessage("There was a problem doing what you asked, probably best to try again ok?", "Message_Error Message_Flash");
-                        return false;
-                    }
+                alert(data);
+                    FlashMessage("Your comment was added!", "Message_Success Message_Flash");
+                    var loadUrl = "<%= Url.Action("Details", "Comment", new { id= 31791972})  %>";
+                    alert(loadUrl);
+                    $("#photo_details").load(loadUrl);
+                    
+                    return false
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
-                    FlashMessage("There was a problem doing what you asked, probably best to try again ok?", "Message_Error Message_Flash");
+                    FlashMessage("There was a problem doing what you asked, probably best to try again ok? "+ textStatus+"", "Message_Error Message_Flash");
                     return false;
                 }
             });
