@@ -1,9 +1,9 @@
-﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<List<instagrammer.FeedItem>>" %>
+﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<ApiResponse<instagrammer.FeedItem>>" %>
 <%@ Import Namespace="instagrammer" %>
 
 <div class="user_feed">
     <%  if(Model != null) {
-            foreach (var item in Model) {
+            foreach (var item in Model.data) {
     %>
         <div class="feed_entry class="clearfix">
             <div class="feed_entry_header">
@@ -29,3 +29,5 @@
         } 
     %>
 </div>
+<%--
+<% Html.RenderAction("Pager"); %>--%>

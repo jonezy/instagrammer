@@ -19,7 +19,7 @@ namespace Instagrammer.Example.Controllers {
             if (base.userToken != null) {
                 UsersClient client = new UsersClient(userToken.access_token);
                 try {
-                    ViewData["UserFeed"] = client.SelfFeed().data;
+                    ViewData["UserFeed"] = client.SelfFeed();
                     return View(client.User(null).data);
                 } catch { }
             }
@@ -37,6 +37,12 @@ namespace Instagrammer.Example.Controllers {
             user.last_name = "Jones";
             
             return user.Serialize();
+        }
+
+        [ChildActionOnly]
+        public ActionResult Pager() {
+            ApiResponse<FeedItem> model = ViewData["UserFeed"] as ApiResponse<FeedItem>;
+            return PartialView("Pager", model.pagination);
         }
     }
 }

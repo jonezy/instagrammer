@@ -32,6 +32,21 @@ namespace instagrammer {
         /// </summary>
         /// <returns>An ApiResponse containing a list of FeedItem's on the data node</returns>
         public ApiResponse<FeedItem> SelfFeed() {
+            return SelfFeed(null, null);
+        }
+
+        /// <summary>
+        /// Show the currently authenticated users feed
+        /// </summary>
+        /// <returns>An ApiResponse containing a list of FeedItem's on the data node</returns>
+        public ApiResponse<FeedItem> SelfFeed(string next_max_id, string prev_max_id) {
+            string requestUrl = string.Format(ApiUrls.USER_FEED_URL, base._token, null);
+
+            if (!string.IsNullOrEmpty(next_max_id))
+                requestUrl = string.Format("{0}&max_id={1}", requestUrl, next_max_id);
+            if (!string.IsNullOrEmpty(prev_max_id))
+                requestUrl = string.Format("{0}&max_id={1}", requestUrl, prev_max_id);
+
             string json = GetJSON(string.Format(ApiUrls.USER_FEED_URL, base._token), null);
             ApiResponse<FeedItem> response = json.Deserialize<ApiResponse<FeedItem>>();
 

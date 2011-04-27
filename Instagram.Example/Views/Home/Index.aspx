@@ -6,5 +6,5 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <h2 class="textshadow_white">Your feed <% Html.RenderPartial("SubNav", ViewData["SubNavItems"]); %></h2>
-    <% Html.RenderPartial("UserFeed", ViewData["UserFeed"]); %>    
+    <% Html.RenderPartial("UserFeed", ViewData["UserFeed"]); %>
 </asp:Content>
