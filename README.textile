@@ -1,3 +1,10 @@
 h1. instagrammer
 
-This will eventually end up being a c# wrapper for accessing and using the instagram public api, right now it's a bloody mess and should be ignored completely.
+This is pretty complete at the moment, there are certain things that don't work (paging being the biggest most noticeable one) because for the life of me i just can't figure out the way the api returns the data, makes NO sense to me.  But anyways, yeah the example site is asp.net mvc 2 and all you have to do is open the solution and F5 that bitch and it'll spin up.
+
+h1. notes
+
+As mentioned above, just open the soltution file and F5 the Instagrammer.Example web project and it'll fire up (it's visual studio 2008 BTW)
+
+The api wrapper is pretty well documented and should be easy to follow, you can drop the instagrammer.dll into your own project and use it as desired.
+
